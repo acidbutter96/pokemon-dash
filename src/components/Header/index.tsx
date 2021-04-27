@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
     Container,
     SearchBar,
@@ -7,7 +9,7 @@ import {
 import logoPokemon from '../../assets/images/navbar/logo-pokemon.svg';
 import logoCompeti from '../../assets/images/navbar/logo.svg';
 
-const Header = () => {
+const Header: React.FC = () => {
     return (
         <Container>
             <img src={logoPokemon} alt="Logo Pokémon" />
