@@ -1,15 +1,14 @@
 import React from 'react';
-
 import {
     Container,
-} from './styles'
+} from './styles';
 
-const Body: React.FC = ({ children }) => {
+const Home: React.FC = () => {
     return (
         <Container>
-            {children}
+            Home
         </Container>
     )
 }
 
-export default Body;
+export default Home;

@@ -5,8 +5,8 @@ import GlobalStyles from './styles/GlobalStyles';
 import light from './styles/themes/light';
 
 import Header from './components/Header';
-import Body from './components/Body';
 import Footer from './components/Footer';
+import Routes from './routes';
 
 
 const App: React.FC = () => {
@@ -16,9 +16,7 @@ const App: React.FC = () => {
       <header>
         <Header />
       </header>
-      <main>
-        <Body />
-      </main>
+      <Routes />
       <footer>
         <Footer />
       </footer>
