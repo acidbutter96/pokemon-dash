@@ -13,7 +13,7 @@ const Header: React.FC = () => {
     return (
         <Container>
             <img src={logoPokemon} alt="Logo Pokémon" />
-            <SearchBar value="Search Pokémon" />
+            <SearchBar placeholder="Search Pokémon" />
             <LoginButton type="button">
                 login
             </LoginButton>

@@ -5,21 +5,23 @@ export const Container = styled.nav`
     right:0;
     top: 0;
 
-    height: 5.4rem;
+    height: 3.4rem;
     width: 100vw;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+
+    padding: 2rem;
 
     background-color: ${props => props.theme.colors.primary};
 `
 
 export const SearchBar = styled.input`
     width: 67vw;
-    height: 3.4rem;
+    height: 2.4rem;
 
-    margin: 0 2rem;
+    margin: 1rem;
 
     padding: 0 1rem;
 
@@ -29,8 +31,8 @@ export const SearchBar = styled.input`
     border-radius: 5px;
 
     font-size: 1.25rem;
-    font-family:'Segoe UI', sans-serif;
-    color: rgba(0,0,0,.65);
+    font-family: 'Poppins', sans-serif;
+    //color: rgba(0,0,0,.65);
 `
 
 export const LoginButton = styled.button`
@@ -49,9 +51,7 @@ export const LoginButton = styled.button`
 
     &:hover{
         filter: brightness(1.1);
-        transform: translateX(1px);
-
-        
+        transform: translateX(1px);        
     }
     
     background-color: ${props => props.theme.colors.quintenary};

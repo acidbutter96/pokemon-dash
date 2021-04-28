@@ -5,7 +5,6 @@ import GlobalStyles from './styles/GlobalStyles';
 import light from './styles/themes/light';
 
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Routes from './routes';
 
 
@@ -17,9 +16,6 @@ const App: React.FC = () => {
         <Header />
       </header>
       <Routes />
-      <footer>
-        <Footer />
-      </footer>
     </ThemeProvider>
   );
 }

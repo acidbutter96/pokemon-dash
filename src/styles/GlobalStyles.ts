@@ -8,8 +8,24 @@ export default createGlobalStyle`
     }
 
     html, body, #root {
-        height: 100%;
+        height: 100vh;
+        width: 100vw;
+
+        overflow-x: hidden;
         background-color: ${props => props.theme.colors.tertiary};
+
+        ::-webkit-scrollbar {
+        width: .6rem;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: ${props => props.theme.colors.primary};
+            border-radius: .6rem;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: ${props => props.theme.colors.quatenary}
+        }
     }
 
     *, button, input {
@@ -21,4 +37,8 @@ export default createGlobalStyle`
     button {
         cursor: pointer;
     }
+
+    
+
+    overflow-x:hidden;
 `;
