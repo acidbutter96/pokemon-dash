@@ -1,4 +1,5 @@
 import React from 'react';
+import PokemonCard from '../PokemonCard';
 
 import {
     Container,
@@ -26,6 +27,11 @@ const HomeBoard: React.FC = ({ children }) => {
             name: 'Air'
         },
     ]
+
+    const pokemons = [
+
+    ]
+
     return (
         <Container>
             <Filters>
@@ -37,7 +43,12 @@ const HomeBoard: React.FC = ({ children }) => {
                 </Selector>
             </Filters>
             <PokemonContainer>
-
+                <PokemonCard />
+                <PokemonCard />
+                <PokemonCard />
+                <PokemonCard />
+                <PokemonCard />
+                <PokemonCard />
             </PokemonContainer>
         </Container>
     )

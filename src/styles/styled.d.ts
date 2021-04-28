@@ -18,6 +18,8 @@ declare module 'styled-components' {
             success: string;
             info: string;
             warning: string;
+
+            fire: string;
         },
     };
 }

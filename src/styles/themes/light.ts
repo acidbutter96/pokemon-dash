@@ -15,6 +15,8 @@ const light = {
         success: '#03BB85',
         info: '#3B5998',
         warning: '#FF6961',
+
+        fire: '#F25D52',
     },
 };
 

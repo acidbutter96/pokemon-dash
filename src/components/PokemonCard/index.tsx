@@ -1,19 +1,34 @@
 import React from 'react';
 import {
     Container,
+    NumberContainer,
+    PokeNumber,
+    PokeType,
+    PokeImage,
+    PokeName,
 } from './styles';
 
-interface Pokemon {
-    id: string;
-}
+import charmander from '../../assets/images/temp/charmander.svg';
 
-interface IPokemonCard {
-    pokemon: Pokemon[]; // Array<Pokemon>
-};
 
-const PokemonCard: React.FC<IPokemonCard> = ({ pokemon }) => {
+const PokemonCard: React.FC = () => {
     return (
         <Container>
+            <NumberContainer>
+                4
+            </NumberContainer>
+            <PokeNumber />
+            <PokeType>
+                Fire
+            </PokeType>
+            <PokeImage>
+                <img src={charmander} alt="Charmander" />
+            </PokeImage>
+            <PokeName>
+                Charmander
+            </PokeName>
         </Container>
     )
 }
+
+export default PokemonCard;

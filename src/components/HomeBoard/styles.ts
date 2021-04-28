@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: 48rem;
-    width: 80rem;
+    min-height: 57.62rem;
+    width: 71.25rem;
 
     padding: 1rem 0;
 
@@ -49,4 +49,8 @@ export const Selector = styled.select`
 `;
 
 export const PokemonContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 `;
