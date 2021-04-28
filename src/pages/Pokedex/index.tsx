@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import {
     Container,
-} from './styles';
+} from './styles'
 
 const Pokedex: React.FC = () => {
     return (
@@ -11,4 +11,4 @@ const Pokedex: React.FC = () => {
     )
 }
 
-export default Pokedex;
+export default Pokedex

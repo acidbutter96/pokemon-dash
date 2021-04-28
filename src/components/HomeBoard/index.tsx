@@ -1,5 +1,5 @@
-import React from 'react';
-import PokemonCard from '../PokemonCard';
+import React from 'react'
+import PokemonCard from '../PokemonCard'
 
 import {
     Container,
@@ -54,4 +54,4 @@ const HomeBoard: React.FC = ({ children }) => {
     )
 }
 
-export default HomeBoard;
+export default HomeBoard

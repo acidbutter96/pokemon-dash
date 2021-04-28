@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import {
     Container
-} from './styles';
+} from './styles'
 
 const RandomPanel: React.FC = () => {
     return (
@@ -10,4 +10,4 @@ const RandomPanel: React.FC = () => {
     )
 }
 
-export default RandomPanel;
+export default RandomPanel

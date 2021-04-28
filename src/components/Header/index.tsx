@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
     Container,
@@ -6,8 +6,8 @@ import {
     LoginButton
 } from './styles'
 
-import logoPokemon from '../../assets/images/navbar/logo-pokemon.svg';
-import logoCompeti from '../../assets/images/navbar/logo.svg';
+import logoPokemon from '../../assets/images/navbar/logo-pokemon.svg'
+import logoCompeti from '../../assets/images/navbar/logo.svg'
 
 const Header: React.FC = () => {
     return (
@@ -22,4 +22,4 @@ const Header: React.FC = () => {
     )
 }
 
-export default Header;
+export default Header

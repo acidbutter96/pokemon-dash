@@ -1,9 +1,9 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-import Main from '../components/Main';
-import Home from '../pages/Home';
-import Pokedex from '../pages/Pokedex';
+import Main from '../components/Main'
+import Home from '../pages/Home'
+import Pokedex from '../pages/Pokedex'
 
 const App: React.FC = () => {
     return (
@@ -16,4 +16,4 @@ const App: React.FC = () => {
     )
 }
 
-export default App;
+export default App

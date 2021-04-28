@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
     Container,
     NumberContainer,
@@ -6,12 +6,13 @@ import {
     PokeType,
     PokeImage,
     PokeName,
-} from './styles';
+} from './styles'
 
-import charmander from '../../assets/images/temp/charmander.svg';
+import charmander from '../../assets/images/temp/charmander.svg'
 
 
 const PokemonCard: React.FC = () => {
+
     return (
         <Container>
             <NumberContainer>
@@ -31,4 +32,4 @@ const PokemonCard: React.FC = () => {
     )
 }
 
-export default PokemonCard;
+export default PokemonCard

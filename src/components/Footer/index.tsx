@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
     Container,
@@ -16,4 +16,4 @@ const Footer: React.FC = () => {
     )
 }
 
-export default Footer;
+export default Footer

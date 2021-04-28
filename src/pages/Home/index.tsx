@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 import {
     Container,
     BoardContainer,
-} from './styles';
+} from './styles'
 
-import HomeBoard from '../../components/HomeBoard';
-import Footer from '../../components/Footer';
-import RandomPanel from '../../components/RandomPanel';
+import HomeBoard from '../../components/HomeBoard'
+import Footer from '../../components/Footer'
+import RandomPanel from '../../components/RandomPanel'
 
 const Home: React.FC = () => {
     return (
@@ -21,4 +21,4 @@ const Home: React.FC = () => {
     )
 }
 
-export default Home;
+export default Home

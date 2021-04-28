@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
     Container,
@@ -12,4 +12,4 @@ const Main: React.FC = ({ children }) => {
     )
 }
 
-export default Main;
+export default Main

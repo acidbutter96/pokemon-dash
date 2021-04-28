@@ -1,11 +1,11 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
 
-import GlobalStyles from './styles/GlobalStyles';
-import light from './styles/themes/light';
+import GlobalStyles from './styles/GlobalStyles'
+import light from './styles/themes/light'
 
-import Header from './components/Header';
-import Routes from './routes';
+import Header from './components/Header'
+import Routes from './routes'
 
 
 const App: React.FC = () => {
@@ -17,7 +17,7 @@ const App: React.FC = () => {
       </header>
       <Routes />
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
