@@ -12,8 +12,8 @@ const light = {
         black: '#000',
         gray: '#B4ADBE',
 
-        success: '#03BB85',
-        info: '#3B5998',
+        success: '#3AA05B',
+        info: '#49DBDF',
         warning: '#FF6961',
 
         fire: '#F25D52',

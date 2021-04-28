@@ -6,27 +6,47 @@ import {
     PokeType,
     PokeImage,
     PokeName,
+    PokebuttonContainer,
+    PreviewButton,
+    AddButton,
+    ImageContainer,
 } from './styles'
+import { IoMdAdd, IoMdEye } from 'react-icons/io'
 
-import charmander from '../../assets/images/temp/charmander.svg'
+type PokemonCardProps = {
+    pokenumber: number;
+    id: string;
+    type: string;
+    pokeimage: string;
+    pokename: string;
+}
 
-
-const PokemonCard: React.FC = () => {
+const PokemonCard: React.FC<PokemonCardProps> = ({ id, pokeimage, pokename, pokenumber, type }) => {
 
     return (
         <Container>
             <NumberContainer>
-                4
+                {pokenumber}
             </NumberContainer>
             <PokeNumber />
             <PokeType>
-                Fire
+                {type}
             </PokeType>
             <PokeImage>
-                <img src={charmander} alt="Charmander" />
+                <PokebuttonContainer>
+                    <PreviewButton>
+                        <IoMdAdd />
+                    </PreviewButton>
+                    <AddButton>
+                        <IoMdEye />
+                    </AddButton>
+                </PokebuttonContainer>
+                <ImageContainer>
+                    <img src={pokeimage} alt="Charmander" />
+                </ImageContainer>
             </PokeImage>
             <PokeName>
-                Charmander
+                {pokename}
             </PokeName>
         </Container>
     )

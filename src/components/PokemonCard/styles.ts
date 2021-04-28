@@ -24,8 +24,8 @@ export const NumberContainer = styled.div`
     justify-content:center;
 
     position: absolute;
-    left: -.4rem;
-    top: -.3rem;
+    left: -.5rem;
+    top: -.1rem;
     z-index: 4;
 
     background-color: transparent;
@@ -46,7 +46,7 @@ export const PokeNumber = styled.div`
 
     position: absolute;
     left: -.4rem;
-    top: -.3rem;
+    top: -.1rem;
     z-index: 3;
 
     border: 2px solid ${props => props.theme.colors.black};
@@ -80,22 +80,6 @@ export const PokeType = styled.div`
     color: ${props => props.theme.colors.white};
 `
 
-export const PokeImage = styled.div`
-    height: 12.68rem;
-    width: 14rem;
-
-    background: ${props => props.theme.colors.gray};
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    border: 2px solid ${props => props.theme.colors.black};
-    border-radius: .5rem;
-
-    z-index:0;
-`
-
 export const PokeName = styled.div`
     height: 3.44rem;
     width: 9.06rem;
@@ -105,7 +89,7 @@ export const PokeName = styled.div`
     justify-content: center;
 
     position: absolute;
-    bottom: 0;
+    bottom: -.7em;
 
     background-color: ${props => props.theme.colors.quatenary};
 
@@ -120,4 +104,83 @@ export const PokeName = styled.div`
     overflow-x: hidden;
     overflow-y: hidden;
     text-overflow: ellipsis;
+`
+
+export const PokebuttonContainer = styled.div`
+    position: absolute;
+
+    z-index: 10;
+
+    display: none;
+`
+
+export const PreviewButton = styled.div`
+    width: 2.81rem;
+    height: 2.81rem;
+
+    margin: 1.31rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+
+    border-radius: 10rem;
+
+    background-color: ${props => props.theme.colors.info};
+
+    font-size: 1.7rem;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    color: ${props => props.theme.colors.white};
+
+    cursor: pointer;
+
+    transition: all .3s;
+
+    &:hover{
+        filter: brightness(1.2);
+    }
+`
+
+export const AddButton = styled(PreviewButton)`
+    background-color: ${props => props.theme.colors.success};
+
+`
+
+export const ImageContainer = styled.div`
+    background: ${props => props.theme.colors.gray};
+`
+
+
+export const PokeImage = styled.div`
+    height: 12.68rem;
+    width: 14rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    
+    border: 2px solid ${props => props.theme.colors.black};
+    border-radius: .5rem;
+
+    z-index:0;
+
+    &:hover{
+        ${ImageContainer}{
+            filter: brightness(.6);
+
+            img {
+                filter: brightness(.6);
+            }
+        }
+
+        ${PokebuttonContainer}{
+            display: flex !important;
+        }
+
+    }
 `

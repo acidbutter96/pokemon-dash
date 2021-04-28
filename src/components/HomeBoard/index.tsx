@@ -8,6 +8,8 @@ import {
     PokemonContainer,
 } from './styles'
 
+import charmander from '../../assets/images/temp/charmander.svg'
+
 const HomeBoard: React.FC = ({ children }) => {
     const kindPokemon = [
         {
@@ -43,12 +45,48 @@ const HomeBoard: React.FC = ({ children }) => {
                 </Selector>
             </Filters>
             <PokemonContainer>
-                <PokemonCard />
-                <PokemonCard />
-                <PokemonCard />
-                <PokemonCard />
-                <PokemonCard />
-                <PokemonCard />
+                <PokemonCard
+                    id="1"
+                    pokeimage={charmander}
+                    pokename="Chamander"
+                    pokenumber={4}
+                    type="Fire"
+                />
+                <PokemonCard
+                    id="1"
+                    pokeimage={charmander}
+                    pokename="Chamander"
+                    pokenumber={4}
+                    type="Fire"
+                />
+                <PokemonCard
+                    id="1"
+                    pokeimage={charmander}
+                    pokename="Chamander"
+                    pokenumber={4}
+                    type="Fire"
+                />
+                <PokemonCard
+                    id="1"
+                    pokeimage={charmander}
+                    pokename="Chamander"
+                    pokenumber={4}
+                    type="Fire"
+                />
+                <PokemonCard
+                    id="1"
+                    pokeimage={charmander}
+                    pokename="Chamander"
+                    pokenumber={4}
+                    type="Fire"
+                />
+                <PokemonCard
+                    id="1"
+                    pokeimage={charmander}
+                    pokename="Chamander"
+                    pokenumber={4}
+                    type="Fire"
+                />
             </PokemonContainer>
         </Container>
     )
