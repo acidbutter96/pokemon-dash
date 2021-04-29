@@ -54,7 +54,7 @@ export const PokeNumber = styled.div`
 
     display: block;
 
-    transform: rotate(45deg); 
+    transform: rotate(45deg);
 `
 
 export const PokeType = styled.div`
