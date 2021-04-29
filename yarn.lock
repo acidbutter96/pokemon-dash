@@ -1869,6 +1869,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-paginate@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-paginate/-/react-paginate-7.1.0.tgz#e209fe9735f0a68633c82c419ba238133b3b31a1"
+  integrity sha512-P6yboMnZtML4KyglK2p7Wlg+sIkhNUneES+jjFqPeQkjuM93X5QjhdKIW2Ayc7csVvx1pdC9v5R+hQ9KjcYBEQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-router-dom@^5.1.7":
   version "5.1.7"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-5.1.7.tgz#a126d9ea76079ffbbdb0d9225073eb5797ab7271"

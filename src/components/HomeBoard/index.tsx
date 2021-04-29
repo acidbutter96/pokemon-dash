@@ -1,11 +1,14 @@
 import React from 'react'
 import PokemonCard from '../PokemonCard'
+import ReactPaginate from 'react-paginate'
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight, } from 'react-icons/md'
 
 import {
     Container,
     Filters,
     Selector,
     PokemonContainer,
+    PaginatorContainer,
 } from './styles'
 
 import charmander from '../../assets/images/temp/charmander.svg'
@@ -31,6 +34,7 @@ const HomeBoard: React.FC = ({ children }) => {
     ]
 
     const pokemons = [
+
 
     ]
 
@@ -87,6 +91,22 @@ const HomeBoard: React.FC = ({ children }) => {
                     pokenumber={4}
                     type="Fire"
                 />
+                <PaginatorContainer>
+                    <ReactPaginate
+                        pageCount={10}
+                        pageRangeDisplayed={2}
+                        marginPagesDisplayed={0}
+                        activeClassName={'active'}
+                        previousLabel={<MdKeyboardArrowLeft />}
+                        nextLabel={<MdKeyboardArrowRight />}
+                        pageClassName={'pageItem'}
+                        containerClassName={'paginatorcontainer'}
+                        nextClassName={'actionbutton'}
+                        previousClassName={'actionbutton'}
+
+                    //onPageChange={(v) => { console.log(v) }}
+                    />
+                </PaginatorContainer>
             </PokemonContainer>
         </Container>
     )

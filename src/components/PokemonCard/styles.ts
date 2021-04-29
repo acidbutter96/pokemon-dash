@@ -108,10 +108,11 @@ export const PokeName = styled.div`
 
 export const PokebuttonContainer = styled.div`
     position: absolute;
-
     z-index: 10;
 
     display: none;
+
+    transition: all .3s;
 `
 
 export const PreviewButton = styled.div`
@@ -151,6 +152,8 @@ export const AddButton = styled(PreviewButton)`
 
 export const ImageContainer = styled.div`
     background: ${props => props.theme.colors.gray};
+
+    transition: all .3s;
 `
 
 

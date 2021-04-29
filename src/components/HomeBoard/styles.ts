@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
     min-height: 57.62rem;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const Filters = styled.div`
     border-bottom: 1px solid black;
 
-    padding: 0 2rem;
+    padding: 0 1rem 1rem 3.28rem;
 
 `
 
@@ -46,11 +46,70 @@ export const Selector = styled.select`
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     }
 
-`;
+`
 
 export const PokemonContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
+    position: relative;
+
 `;
+
+export const PaginatorContainer = styled.div`
+        position: absolute;
+        bottom: -3.93rem;
+        right:8.06rem;
+
+    .paginatorcontainer{
+
+        display: flex;
+        list-style-type: none;
+
+        li {
+            min-height: 2.5rem !important;
+            min-width: 2.6rem !important;
+
+            display: flex;
+            justify-content:center;
+            align-items: center;
+
+            background-color: ${props => props.theme.colors.quatenary};
+
+            border: 2px solid ${props => props.theme.colors.black};
+            border-radius: .5rem;
+
+            font-size: 1.37rem;
+            font-family: 'Poppins', sans-serif;
+            color: ${props => props.theme.colors.white};
+
+            transition: all .3s;
+
+            cursor: pointer;
+
+            & + li {
+                margin-left: 1rem;
+            }
+
+            &:hover{
+                filter: brightness(1.1);
+                transform: translateX(.5px) translateY(.3px);
+            }
+        }
+        
+
+        /* .pageItem { 
+            
+        } */
+
+        .actionbutton{
+            background: ${props => props.theme.colors.gray};
+        }
+
+        .active {
+            background: ${props => props.theme.colors.quintenary};
+        }
+    }
+`
