@@ -151,9 +151,18 @@ export const AddButton = styled(PreviewButton)`
 `
 
 export const ImageContainer = styled.div`
+    height: 100%;
+    width: 100%;
+
     background: ${props => props.theme.colors.gray};
 
     transition: all .3s;
+
+    img{
+        width: 100%;
+        height: 100%; 
+    }
+
 `
 
 

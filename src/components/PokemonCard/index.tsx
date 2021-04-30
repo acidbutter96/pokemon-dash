@@ -21,22 +21,6 @@ import { capitalize } from '../../utils/capitalize'
 
 type PokemonCardProps = {
     id: number;
-    /* pokenumber: number;
-    type: string;
-    pokeimage: string;
-    pokename: string; */
-}
-
-interface IPokemonCard {
-    name: string;
-    sprites: {
-        front_default: string;
-    };
-    types: {
-        slot: string;
-        name: string;
-        id: number;
-    }[]
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ id }) => {
