@@ -1,0 +1,1 @@
+export const idFromTypesUrl = (url: string): string => url.split('/')[url.split('/').length - 2]

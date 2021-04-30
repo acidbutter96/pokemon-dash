@@ -6,16 +6,19 @@ import light from './styles/themes/light'
 
 import Header from './components/Header'
 import Routes from './routes'
+import PokemonContextProvider from './hooks/pokemon'
 
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={light}>
-      <GlobalStyles />
-      <header>
-        <Header />
-      </header>
-      <Routes />
+      <PokemonContextProvider>
+        <GlobalStyles />
+        <header>
+          <Header />
+        </header>
+        <Routes />
+      </PokemonContextProvider>
     </ThemeProvider>
   )
 }
