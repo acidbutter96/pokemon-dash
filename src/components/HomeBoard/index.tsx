@@ -19,50 +19,35 @@ const HomeBoard: React.FC = ({ children }) => {
         setType,
         typeArray,
         typeId,
+        pokemonArray,
     } = usePokemon()
 
-    const kindPokemon = [
-        {
-            id: 1,
-            name: 'Fire'
-        },
-        {
-            id: 2,
-            name: 'Water'
-        },
-        {
-            id: 3,
-            name: 'Earth'
-        },
-        {
-            id: 4,
-            name: 'Air'
-        },
-    ]
+    const selectRef = useRef<HTMLSelectElement>(null)
 
     return (
         <Container>
             <Filters>
                 <Selector
+                    ref={selectRef}
                     name='filter'
                     defaultValue={'disabled'}
                     id='filterselect'
-
+                    onChange={(e) => { setType(parseInt(selectRef.current?.value || '0')) }}
                 >
                     <option value='disabled' disabled>
                         Select one filter
                     </option>
-                    {kindPokemon.map(element => <option value={element.id} key={element.id}>{element.name}</option>)}
+                    {typeArray.map(element => <option value={element.id} key={element.id}>{element.name}</option>)}
                 </Selector>
             </Filters>
             <PokemonContainer>
-                <PokemonCard
-                    id='1'
-                    pokeimage={charmander}
-                    pokename='Chamander'
-                    pokenumber={4}
-                    type='Fire'
-                />
+                {pokemonArray.map((element) => (
+                    <PokemonCard
+                        key={element.id}
+                        id={element.id}
+                    />
+                )
+                )}
                 <PaginatorContainer>
                     <ReactPaginate
                         pageCount={10}

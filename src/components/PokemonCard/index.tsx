@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { IoMdAdd, IoMdEye } from 'react-icons/io'
+
 import {
     Container,
     NumberContainer,
@@ -11,26 +13,63 @@ import {
     AddButton,
     ImageContainer,
 } from './styles'
-import { IoMdAdd, IoMdEye } from 'react-icons/io'
+
+import { getPokemonInfo } from '../../providers/pokeapi'
+import { IPokemon } from '../../hooks/pokemon/index'
+
+import { capitalize } from '../../utils/capitalize'
 
 type PokemonCardProps = {
-    pokenumber: number;
-    id: string;
+    id: number;
+    /* pokenumber: number;
     type: string;
     pokeimage: string;
-    pokename: string;
+    pokename: string; */
 }
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ id, pokeimage, pokename, pokenumber, type }) => {
+interface IPokemonCard {
+    name: string;
+    sprites: {
+        front_default: string;
+    };
+    types: {
+        slot: string;
+        name: string;
+        id: number;
+    }[]
+}
+
+const PokemonCard: React.FC<PokemonCardProps> = ({ id }) => {
+    const [pokeInfo, setPokeInfo] = useState<IPokemon>({
+        name: '',
+        sprites: {
+            front_default: ''
+        },
+        types: [
+            {
+                slot: '1',
+                name: '',
+                id: 1,
+            }
+        ]
+    })
+
+    if (pokeInfo.name === '') {
+        getPokemonInfo(id)
+            .then(response => {
+                setPokeInfo(response[0])
+            })
+    }
+
 
     return (
         <Container>
             <NumberContainer>
-                {pokenumber}
+                {id}
             </NumberContainer>
             <PokeNumber />
             <PokeType>
-                {type}
+                {capitalize(pokeInfo?.types[0]?.name || '')}
             </PokeType>
             <PokeImage>
                 <PokebuttonContainer>
@@ -42,11 +81,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, pokeimage, pokename, poke
                     </AddButton>
                 </PokebuttonContainer>
                 <ImageContainer>
-                    <img src={pokeimage} alt="Charmander" />
+                    <img src={pokeInfo?.sprites.front_default} alt="Charmander" />
                 </ImageContainer>
             </PokeImage>
             <PokeName>
-                {pokename}
+                {capitalize(pokeInfo !== undefined ? pokeInfo?.name : '')}
             </PokeName>
         </Container>
     )
