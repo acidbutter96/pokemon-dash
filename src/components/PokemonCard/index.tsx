@@ -58,7 +58,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, typeName }) => {
             <PokeType
                 typeColor={colorbytype(typeNamed.toLowerCase())}
             >
-                {capitalize(typeName || '')}
+                {capitalize(typeNamed || '')}
             </PokeType>
             <PokeImage>
                 <PokebuttonContainer>
