@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 export const Container = styled.div`
     min-height: 57.62rem;
     width: 71.25rem;
@@ -15,7 +16,6 @@ export const Filters = styled.div`
     border-bottom: 1px solid black;
 
     padding: 0 1rem 1rem 3.28rem;
-
 `
 
 export const Selector = styled.select`

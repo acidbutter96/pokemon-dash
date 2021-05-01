@@ -30,6 +30,7 @@ export const NumberContainer = styled.div`
     position: absolute;
     left: -.5rem;
     top: -.1rem;
+
     z-index: 4;
 
     background-color: transparent;
@@ -51,6 +52,7 @@ export const PokeNumber = styled.div`
     position: absolute;
     left: -.4rem;
     top: -.1rem;
+
     z-index: 3;
 
     border: 2px solid ${props => props.theme.colors.black};
