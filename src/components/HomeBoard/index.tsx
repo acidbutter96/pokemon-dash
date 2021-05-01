@@ -21,6 +21,8 @@ const HomeBoard: React.FC = () => {
         setPage,
         pageCounter,
         pokemonArrayType,
+        searchIsEmpty,
+        returnedData,
     } = usePokemon()
 
     const selectRef = useRef<HTMLSelectElement>(null)
@@ -45,22 +47,33 @@ const HomeBoard: React.FC = () => {
             </Filters>
             <PokemonContainer>
                 {
-                    pokemonArrayType.length === 0 ? pokemonArray.map((element) => (
-                        <PokemonCard
-                            key={element.id}
-                            id={element.id}
-                            typeName={'auto'}
-                        />
-                    )) :
-
-                        pokemonArrayType.map((element) => (
+                    searchIsEmpty ? (
+                        pokemonArrayType.length === 0 ? pokemonArray.map((element) => (
                             <PokemonCard
                                 key={element.id}
                                 id={element.id}
-                                typeName={element.type.name}
+                                typeName={'auto'}
+                            />
+                        )) :
+
+                            pokemonArrayType.map((element) => (
+                                <PokemonCard
+                                    key={element.id}
+                                    id={element.id}
+                                    typeName={element.type.name}
+                                />
+                            )
+                            ))
+                        :
+                        returnedData.map((element) => (
+                            <PokemonCard
+                                key={element.id}
+                                id={element.id}
+                                typeName={'auto'}
                             />
                         )
                         )
+
                 }
                 <PaginatorContainer>
                     <ReactPaginate

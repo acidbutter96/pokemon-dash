@@ -13,6 +13,7 @@ interface IPokemonContext {
     setSearch: (query: string) => void;
     setFirstSearch: () => void;
     returnedData: IPokemonType[];
+    searchIsEmpty: boolean;
 }
 
 export interface IPokemonType {
@@ -100,11 +101,17 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     const [searchQuery, setSearchQuery] = useState<string>('')
     const [searchPokemonData, setSearchPokemonData] = useState<IPokemonResults[]>([])
     const [returnedData, setReturnedData] = useState<IPokemonResults[]>([])
+    const [searchIsEmpty, setSearchIsEmpty] = useState<boolean>(true)
 
     useEffect(() => {
-        setReturnedData(searchPokemonData.filter((pokemon) => {
-            return pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
-        }))
+        if (searchQuery.length > 2) {
+            setReturnedData(searchPokemonData.filter((pokemon) => {
+                return pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+            }))
+            setSearchIsEmpty(false)
+        } else {
+            setSearchIsEmpty(true)
+        }
     }, [searchQuery])
 
     /* context methods */
@@ -147,6 +154,7 @@ const PokemonContextProvider: React.FC = ({ children }) => {
                 setSearch,
                 setFirstSearch,
                 returnedData,
+                searchIsEmpty,
             }}>
             {children}
         </PokemonContext.Provider>
