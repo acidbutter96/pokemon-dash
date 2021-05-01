@@ -10,6 +10,9 @@ interface IPokemonContext {
     activePage: number;
     pageCounter: number;
     pokemonArrayType: IPokemonTypeResults[];
+    setSearch: (query: string) => void;
+    setFirstSearch: () => void;
+    returnedData: IPokemonType[];
 }
 
 export interface IPokemonType {
@@ -60,7 +63,7 @@ const PokemonContextProvider: React.FC = ({ children }) => {
         getAllPokemons(0, 6)
             .then((response) => {
                 setPokemonArray(response[0].results)
-                setPageCounter(response[0].count)
+                setCountItems(response[0].count)
             })
     }, [])
 
@@ -68,7 +71,7 @@ const PokemonContextProvider: React.FC = ({ children }) => {
         if (typeId !== 0) {
             getPokemonByType(typeId).then((response) => {
                 setPokemonArrayType(response[0].results)
-                setPageCounter(response[0].count)
+                setCountItems(response[0].count)
             })
         }
     }, [typeId])
@@ -76,11 +79,15 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     /* paginator */
 
     const [activePage, setActivePage] = useState<number>(0)
-    const [pageCounter, setPageCounter] = useState<number>(0)
+    const [countItems, setCountItems] = useState<number>(0)
+    const [pageCounter, setPageCounter] = useState<number>(countItems / 6)
+
+    useEffect(() => {
+        setPageCounter(countItems / 6)
+    }, [countItems])
 
     useEffect(() => {
         if (pokemonArrayType.length === 0) {
-            console.log('primeiro')
             getAllPokemons(activePage * 6)
                 .then((response) => setPokemonArray(response[0].results))
         } else {
@@ -89,8 +96,18 @@ const PokemonContextProvider: React.FC = ({ children }) => {
         }
     }, [activePage])
 
-    /* context methods */
+    /* searchbar */
+    const [searchQuery, setSearchQuery] = useState<string>('')
+    const [searchPokemonData, setSearchPokemonData] = useState<IPokemonResults[]>([])
+    const [returnedData, setReturnedData] = useState<IPokemonResults[]>([])
 
+    useEffect(() => {
+        setReturnedData(searchPokemonData.filter((pokemon) => {
+            return pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+        }))
+    }, [searchQuery])
+
+    /* context methods */
     const setPage = (num: number) => {
         if (typeId === 0) {
             setActivePage(num)
@@ -105,6 +122,16 @@ const PokemonContextProvider: React.FC = ({ children }) => {
         }
     }
 
+    const setSearch = (query: string): void => setSearchQuery(query || '')
+
+    const setFirstSearch = (): void => {
+        if (searchPokemonData.length === 0) {
+            getAllPokemons(0, countItems)
+                .then((response) => {
+                    setSearchPokemonData(response[0].results)
+                })
+        }
+    }
 
     return (
         <PokemonContext.Provider
@@ -117,6 +144,9 @@ const PokemonContextProvider: React.FC = ({ children }) => {
                 activePage,
                 pageCounter,
                 pokemonArrayType,
+                setSearch,
+                setFirstSearch,
+                returnedData,
             }}>
             {children}
         </PokemonContext.Provider>
