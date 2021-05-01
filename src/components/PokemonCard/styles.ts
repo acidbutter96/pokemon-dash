@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface IPokeType {
+    typeColor: string;
+}
+
 export const Container = styled.div`
     min-height: calc(12.68rem+1.81rem);
     width: 14rem;
@@ -57,11 +61,11 @@ export const PokeNumber = styled.div`
     transform: rotate(45deg);
 `
 
-export const PokeType = styled.div`
+export const PokeType = styled.div<IPokeType>`
     height: 1.87rem;
     width: 3.25rem;
 
-    background-color: ${props => props.theme.colors.fire};
+    background-color: ${props => props.typeColor};
 
     position: absolute;
     right: 1.6rem;

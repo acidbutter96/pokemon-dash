@@ -97,6 +97,22 @@ export const PaginatorContainer = styled.div`
                 filter: brightness(1.1);
                 transform: translateX(.5px) translateY(.3px);
             }
+
+            a{
+                height: 100%;
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Old versions of Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                        user-select: none;
+            }
         }
         
 

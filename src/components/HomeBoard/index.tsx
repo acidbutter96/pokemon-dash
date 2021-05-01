@@ -11,15 +11,16 @@ import {
     PaginatorContainer,
 } from './styles'
 
-import charmander from '../../assets/images/temp/charmander.svg'
 import { usePokemon } from '../../hooks/pokemon'
 
-const HomeBoard: React.FC = ({ children }) => {
+const HomeBoard: React.FC = () => {
     const {
         setType,
         typeArray,
-        typeId,
         pokemonArray,
+        setPage,
+        activePage,
+        pageCounter
     } = usePokemon()
 
     const selectRef = useRef<HTMLSelectElement>(null)
@@ -50,9 +51,9 @@ const HomeBoard: React.FC = ({ children }) => {
                 )}
                 <PaginatorContainer>
                     <ReactPaginate
-                        pageCount={10}
+                        pageCount={pageCounter / 6}
                         pageRangeDisplayed={2}
-                        marginPagesDisplayed={0}
+                        marginPagesDisplayed={1}
                         activeClassName={'active'}
                         previousLabel={<MdKeyboardArrowLeft />}
                         nextLabel={<MdKeyboardArrowRight />}
@@ -60,8 +61,7 @@ const HomeBoard: React.FC = ({ children }) => {
                         containerClassName={'paginatorcontainer'}
                         nextClassName={'actionbutton'}
                         previousClassName={'actionbutton'}
-
-                    //onPageChange={(v) => { console.log(v) }}
+                        onPageChange={(v) => { setPage(v.selected) }}
                     />
                 </PaginatorContainer>
             </PokemonContainer>

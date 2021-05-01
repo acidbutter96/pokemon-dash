@@ -18,6 +18,7 @@ import { getPokemonInfo } from '../../providers/pokeapi'
 import { IPokemon } from '../../hooks/pokemon/index'
 
 import { capitalize } from '../../utils/capitalize'
+import { colorbytype } from '../../utils/colorbytype'
 
 type PokemonCardProps = {
     id: number;
@@ -52,7 +53,9 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id }) => {
                 {id}
             </NumberContainer>
             <PokeNumber />
-            <PokeType>
+            <PokeType
+                typeColor={colorbytype(pokeInfo?.types[0]?.name)}
+            >
                 {capitalize(pokeInfo?.types[0]?.name || '')}
             </PokeType>
             <PokeImage>
@@ -65,11 +68,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id }) => {
                     </AddButton>
                 </PokebuttonContainer>
                 <ImageContainer>
-                    <img src={pokeInfo?.sprites.front_default} alt="Charmander" />
+                    <img src={pokeInfo?.sprites.front_default} alt={`${pokeInfo?.types[0]?.name}`} />
                 </ImageContainer>
             </PokeImage>
             <PokeName>
-                {capitalize(pokeInfo !== undefined ? pokeInfo?.name : '')}
+                {capitalize(pokeInfo !== undefined ? pokeInfo?.name.split("-")[0] : '')}
             </PokeName>
         </Container>
     )

@@ -1,1 +1,1 @@
-export const capitalize = (entrance: string): string => entrance.charAt(0).toUpperCase() + entrance.slice(1)
+export const capitalize = (entrance: string): string => entrance.split("-")[0].charAt(0).toUpperCase() + entrance.slice(1)

@@ -28,6 +28,11 @@ interface IPokeApiTypeResponse {
     }[];
 }
 
+interface IPokemonAllRequest {
+    count: number;
+    results: IPokemonResults[];
+}
+
 export const getType = async (): Promise<IPokemonType[]> => {
 
     try {
@@ -47,12 +52,12 @@ export const getType = async (): Promise<IPokemonType[]> => {
     }
 }
 
-export const getAllPokemons = async (offset: number, limit: number = 6): Promise<IPokemonResults[]> => {
+export const getAllPokemons = async (offset: number, limit: number = 6): Promise<IPokemonAllRequest[]> => {
 
     try {
         const { data } = await api.get(`pokemon?offset=${offset}&limit=${limit}`)
 
-        const response: IPokemonResults[] = data.results.map((element: IPokeApiTypeResponse) => {
+        const results: IPokemonResults[] = data.results.map((element: IPokeApiTypeResponse) => {
             return {
                 id: parseInt(idFromPokemonUrl(element.url)),
                 name: element.name,
@@ -60,7 +65,10 @@ export const getAllPokemons = async (offset: number, limit: number = 6): Promise
             }
         })
 
-        return response
+        return [{
+            count: data.count,
+            results
+        }]
     } catch (err) {
         console.error(err)
         return []

@@ -1,11 +1,14 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
-import { api, getAllPokemons, getPokemonInfo, getType } from '../../providers/pokeapi'
+import { getAllPokemons, getType } from '../../providers/pokeapi'
 
 interface IPokemonContext {
     typeId: number;
     typeArray: IPokemonType[];
     setType: (id: number) => void;
     pokemonArray: IPokemonResults[];
+    setPage: (num: number) => void;
+    activePage: number;
+    pageCounter: number;
 }
 
 export interface IPokemonType {
@@ -32,7 +35,7 @@ export interface IPokemon {
     }[]
 }
 
-export const PokemonContext = createContext({} as IPokemonContext)
+const PokemonContext = createContext({} as IPokemonContext)
 
 const PokemonContextProvider: React.FC = ({ children }) => {
     const [typeId, setTypeId] = useState<number>(0)
@@ -48,8 +51,11 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     useEffect(() => {
         getType()
             .then((response) => setTypeArray(response))
-        getAllPokemons(6, 6)
-            .then((response) => setPokemonArray(response))
+        getAllPokemons(0, 6)
+            .then((response) => {
+                setPokemonArray(response[0].results)
+                setPageCounter(response[0].count)
+            })
     }, [])
 
     useEffect(() => {
@@ -60,6 +66,20 @@ const PokemonContextProvider: React.FC = ({ children }) => {
         //console.log(typeId)
     }, [typeId])
 
+    /* paginator */
+
+    const [activePage, setActivePage] = useState<number>(0)
+    const [pageCounter, setPageCounter] = useState<number>(0)
+
+    useEffect(() => {
+        getAllPokemons(activePage * 6, 6)
+            .then((response) => setPokemonArray(response[0].results))
+    }, [activePage])
+
+    const setPage = (num: number) => {
+        setActivePage(num)
+    }
+
     return (
         <PokemonContext.Provider
             value={{
@@ -67,6 +87,9 @@ const PokemonContextProvider: React.FC = ({ children }) => {
                 typeArray,
                 setType,
                 pokemonArray,
+                setPage,
+                activePage,
+                pageCounter,
             }}>
             {children}
         </PokemonContext.Provider>
