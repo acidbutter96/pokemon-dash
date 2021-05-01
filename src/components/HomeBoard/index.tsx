@@ -35,6 +35,7 @@ const HomeBoard: React.FC = () => {
                     name='filter'
                     defaultValue={'disabled'}
                     id='filterselect'
+                    disabled={!searchIsEmpty || false}
                     onChange={(e) => {
                         setType(parseInt(selectRef.current?.value || '0'))
                     }}
@@ -55,7 +56,6 @@ const HomeBoard: React.FC = () => {
                                 typeName={'auto'}
                             />
                         )) :
-
                             pokemonArrayType.map((element) => (
                                 <PokemonCard
                                     key={element.id}
