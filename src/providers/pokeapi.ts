@@ -83,9 +83,7 @@ export const getPokemonByType = async (id: number, offset: number = 0, limit: nu
                 name: capitalize(data?.name),
             }
 
-        })).slice(offset * limit, limit)
-
-        console.log(results)
+        })).slice(offset, limit)
 
         const count: number = data.pokemon.length
 

@@ -71,13 +71,10 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        console.log(pokemonArrayType)
-    }, [pokemonArrayType])
-
-    useEffect(() => {
         if (typeId !== 0) {
-            getPokemonByType(typeId).then((result) => {
-                setPokemonArrayType(result[0].results)
+            getPokemonByType(typeId).then((response) => {
+                setPokemonArrayType(response[0].results)
+                setPageCounter(response[0].count)
             })
         }
     }, [typeId])
@@ -88,8 +85,14 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     const [pageCounter, setPageCounter] = useState<number>(0)
 
     useEffect(() => {
-        getAllPokemons(activePage * 6, 6)
-            .then((response) => setPokemonArray(response[0].results))
+        if (pokemonArrayType.length === 0) {
+            console.log('primeiro')
+            getAllPokemons(activePage * 6)
+                .then((response) => setPokemonArray(response[0].results))
+        } else {
+            getPokemonByType(typeId, activePage * 6, activePage * 6 + 6)
+                .then((response) => setPokemonArrayType(response[0].results))
+        }
     }, [activePage])
 
     const setPage = (num: number) => {
@@ -97,7 +100,6 @@ const PokemonContextProvider: React.FC = ({ children }) => {
             setActivePage(num)
         } else {
             setActivePage(num)
-
         }
     }
 
