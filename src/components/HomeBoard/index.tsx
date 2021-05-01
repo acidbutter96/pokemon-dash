@@ -75,21 +75,23 @@ const HomeBoard: React.FC = () => {
                         )
 
                 }
-                <PaginatorContainer>
-                    <ReactPaginate
-                        pageCount={pageCounter / 6}
-                        pageRangeDisplayed={2}
-                        marginPagesDisplayed={1}
-                        activeClassName={'active'}
-                        previousLabel={<MdKeyboardArrowLeft />}
-                        nextLabel={<MdKeyboardArrowRight />}
-                        pageClassName={'pageItem'}
-                        containerClassName={'paginatorcontainer'}
-                        nextClassName={'actionbutton'}
-                        previousClassName={'actionbutton'}
-                        onPageChange={(v) => { setPage(v.selected) }}
-                    />
-                </PaginatorContainer>
+                {
+                    searchIsEmpty ? <PaginatorContainer>
+                        <ReactPaginate
+                            pageCount={pageCounter / 6}
+                            pageRangeDisplayed={2}
+                            marginPagesDisplayed={1}
+                            activeClassName={'active'}
+                            previousLabel={<MdKeyboardArrowLeft />}
+                            nextLabel={<MdKeyboardArrowRight />}
+                            pageClassName={'pageItem'}
+                            containerClassName={'paginatorcontainer'}
+                            nextClassName={'actionbutton'}
+                            previousClassName={'actionbutton'}
+                            onPageChange={(v) => { setPage(v.selected) }}
+                        />
+                    </PaginatorContainer> : <div></div>
+                }
             </PokemonContainer>
         </Container>
     )
