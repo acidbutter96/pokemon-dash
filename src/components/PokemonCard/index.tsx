@@ -22,9 +22,10 @@ import { colorbytype } from '../../utils/colorbytype'
 
 type PokemonCardProps = {
     id: number;
+    typeName: string;
 }
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ id }) => {
+const PokemonCard: React.FC<PokemonCardProps> = ({ id, typeName }) => {
     const [pokeInfo, setPokeInfo] = useState<IPokemon>({
         name: '',
         sprites: {
@@ -46,6 +47,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id }) => {
             })
     }
 
+    const typeNamed = typeName === 'auto' ? pokeInfo?.types[0]?.name : typeName
 
     return (
         <Container>
@@ -54,7 +56,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id }) => {
             </NumberContainer>
             <PokeNumber />
             <PokeType
-                typeColor={colorbytype(pokeInfo?.types[0]?.name)}
+                typeColor={colorbytype(typeNamed.toLowerCase())}
             >
                 {capitalize(pokeInfo?.types[0]?.name || '')}
             </PokeType>

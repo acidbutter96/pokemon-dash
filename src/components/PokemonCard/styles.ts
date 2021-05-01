@@ -169,7 +169,6 @@ export const ImageContainer = styled.div`
 
 `
 
-
 export const PokeImage = styled.div`
     height: 12.68rem;
     width: 14rem;

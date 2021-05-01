@@ -19,8 +19,8 @@ const HomeBoard: React.FC = () => {
         typeArray,
         pokemonArray,
         setPage,
-        activePage,
-        pageCounter
+        pageCounter,
+        pokemonArrayType,
     } = usePokemon()
 
     const selectRef = useRef<HTMLSelectElement>(null)
@@ -33,7 +33,9 @@ const HomeBoard: React.FC = () => {
                     name='filter'
                     defaultValue={'disabled'}
                     id='filterselect'
-                    onChange={(e) => { setType(parseInt(selectRef.current?.value || '0')) }}
+                    onChange={(e) => {
+                        setType(parseInt(selectRef.current?.value || '0'))
+                    }}
                 >
                     <option value='disabled' disabled>
                         Select one filter
@@ -42,13 +44,24 @@ const HomeBoard: React.FC = () => {
                 </Selector>
             </Filters>
             <PokemonContainer>
-                {pokemonArray.map((element) => (
-                    <PokemonCard
-                        key={element.id}
-                        id={element.id}
-                    />
-                )
-                )}
+                {
+                    pokemonArrayType.length === 0 ? pokemonArray.map((element) => (
+                        <PokemonCard
+                            key={element.id}
+                            id={element.id}
+                            typeName={'auto'}
+                        />
+                    )) :
+
+                        pokemonArrayType.map((element) => (
+                            <PokemonCard
+                                key={element.id}
+                                id={element.id}
+                                typeName={element.type.name}
+                            />
+                        )
+                        )
+                }
                 <PaginatorContainer>
                     <ReactPaginate
                         pageCount={pageCounter / 6}

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
-import { getAllPokemons, getType } from '../../providers/pokeapi'
+import { getAllPokemons, getType, getPokemonByType } from '../../providers/pokeapi'
 
 interface IPokemonContext {
     typeId: number;
@@ -9,6 +9,7 @@ interface IPokemonContext {
     setPage: (num: number) => void;
     activePage: number;
     pageCounter: number;
+    pokemonArrayType: IPokemonTypeResults[];
 }
 
 export interface IPokemonType {
@@ -23,6 +24,16 @@ export interface IPokemonResults {
     url: string;
 }
 
+export interface IPokemonTypeResults {
+    id: number;
+    name: string;
+    url: string;
+    type: {
+        id: number,
+        name: string;
+    };
+}
+
 export interface IPokemon {
     name: string;
     sprites: {
@@ -32,7 +43,7 @@ export interface IPokemon {
         slot: string;
         name: string;
         id: number;
-    }[]
+    }[];
 }
 
 const PokemonContext = createContext({} as IPokemonContext)
@@ -41,6 +52,7 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     const [typeId, setTypeId] = useState<number>(0)
     const [typeArray, setTypeArray] = useState<IPokemonType[]>([{ id: -1, name: '', url: '' }])
     const [pokemonArray, setPokemonArray] = useState<IPokemonResults[]>([])
+    const [pokemonArrayType, setPokemonArrayType] = useState<IPokemonTypeResults[]>([])
 
     const setType = (id: number): void => {
         if (typeId !== id) {
@@ -59,11 +71,15 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        //console.log(pokemonArray[0].pokemon)
-    }, [pokemonArray])
+        console.log(pokemonArrayType)
+    }, [pokemonArrayType])
 
     useEffect(() => {
-        //console.log(typeId)
+        if (typeId !== 0) {
+            getPokemonByType(typeId).then((result) => {
+                setPokemonArrayType(result[0].results)
+            })
+        }
     }, [typeId])
 
     /* paginator */
@@ -77,7 +93,12 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     }, [activePage])
 
     const setPage = (num: number) => {
-        setActivePage(num)
+        if (typeId === 0) {
+            setActivePage(num)
+        } else {
+            setActivePage(num)
+
+        }
     }
 
     return (
@@ -90,6 +111,7 @@ const PokemonContextProvider: React.FC = ({ children }) => {
                 setPage,
                 activePage,
                 pageCounter,
+                pokemonArrayType,
             }}>
             {children}
         </PokemonContext.Provider>

@@ -41,6 +41,6 @@ export const colorbytype = (type: string): string => {
         case 'shadow':
             return '#846AB6'
         default:
-            return '#000'
+            return 'transparent'
     }
 }
