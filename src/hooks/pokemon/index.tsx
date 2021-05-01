@@ -54,12 +54,6 @@ const PokemonContextProvider: React.FC = ({ children }) => {
     const [pokemonArray, setPokemonArray] = useState<IPokemonResults[]>([])
     const [pokemonArrayType, setPokemonArrayType] = useState<IPokemonTypeResults[]>([])
 
-    const setType = (id: number): void => {
-        if (typeId !== id) {
-            setTypeId(id)
-        }
-    }
-
     useEffect(() => {
         getType()
             .then((response) => setTypeArray(response))
@@ -95,6 +89,8 @@ const PokemonContextProvider: React.FC = ({ children }) => {
         }
     }, [activePage])
 
+    /* context methods */
+
     const setPage = (num: number) => {
         if (typeId === 0) {
             setActivePage(num)
@@ -102,6 +98,13 @@ const PokemonContextProvider: React.FC = ({ children }) => {
             setActivePage(num)
         }
     }
+
+    const setType = (id: number): void => {
+        if (typeId !== id) {
+            setTypeId(id)
+        }
+    }
+
 
     return (
         <PokemonContext.Provider
