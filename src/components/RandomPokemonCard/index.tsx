@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoMdAdd, IoMdEye } from 'react-icons/io'
 
 import {
@@ -40,12 +40,15 @@ const RandomPokemonCard: React.FC<IPokemonCardProps> = ({ id, typeName }) => {
         ]
     })
 
-    if (pokeInfo.name === '') {
-        getPokemonInfo(id)
-            .then(response => {
-                setPokeInfo(response[0])
-            })
-    }
+    useEffect(() => {
+        if (pokeInfo.name === '') {
+            getPokemonInfo(id)
+                .then(response => {
+                    setPokeInfo(response[0])
+                })
+        }
+    }, [id])
+
 
     const typeNamed = typeName === 'auto' ? pokeInfo?.types[0]?.name : typeName
 
@@ -55,11 +58,6 @@ const RandomPokemonCard: React.FC<IPokemonCardProps> = ({ id, typeName }) => {
                 {id}
             </NumberContainer>
             <PokeNumber />
-            <PokeType
-                typeColor={colorbytype(typeNamed.toLowerCase())}
-            >
-                {capitalize(typeNamed || '')}
-            </PokeType>
             <PokeImage>
                 <PokebuttonContainer>
                     <PreviewButton>
@@ -73,6 +71,11 @@ const RandomPokemonCard: React.FC<IPokemonCardProps> = ({ id, typeName }) => {
                     <img src={pokeInfo?.sprites.front_default} alt={`${pokeInfo?.types[0]?.name}`} />
                 </ImageContainer>
             </PokeImage>
+            <PokeType
+                typeColor={colorbytype(typeNamed.toLowerCase())}
+            >
+                {capitalize(typeNamed || '')}
+            </PokeType>
             <PokeName>
                 {capitalize(pokeInfo !== undefined ? pokeInfo?.name.replace('-', ' ') : '')}
             </PokeName>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Carousel, { RenderArrowProps, RenderPaginationProps } from 'react-elastic-carousel'
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 
@@ -13,14 +13,40 @@ import {
     PageContainer,
 } from './styles'
 
-import { randomPokemons, IRandomPokemonIds } from '../../utils/randomokemonlistgenerator'
+interface IRandomPokemonProps {
+    id: number;
+}
 
 const RandomPanel: React.FC = () => {
     const {
         pageCounter,
     } = usePokemon()
 
-    const [randomPokemonList, setRandom] = useState<IRandomPokemonIds[]>(randomPokemons())
+    const [pokeList, setPokeList] = useState<JSX.Element[]>([])
+
+    useEffect(() => {
+        let list: JSX.Element[] = []
+        let rdn: number[] = []
+
+        while (rdn.length < 15) {
+            const rdnNum = Math.floor(Math.random() * 400)
+            if (!rdn.includes(rdnNum)) {
+                rdn.push(rdnNum)
+            }
+        }
+
+        rdn.forEach(element => {
+            list.push(
+                <RandomPokemonCard
+                    id={element}
+                    typeName={'auto'}
+                    key={element}
+                />)
+        })
+
+        setPokeList(list)
+    }, [])
+
 
     const ArrowButton: React.FC<RenderArrowProps> = ({ type, onClick, isEdge }) => {
         const btnContent = type === 'PREV' ? <MdNavigateBefore /> : <MdNavigateNext />
@@ -47,6 +73,7 @@ const RandomPanel: React.FC = () => {
                                 type='button'
                                 onClick={() => onClick(`${page}`)}
                                 disabled={isActive}
+                                key={page}
                             >
                             </PaginationBtn>)
                     })
@@ -55,21 +82,24 @@ const RandomPanel: React.FC = () => {
         )
     }
 
+    const breakPoints = [
+        { width: 1, itemsToShow: 1, pagination: false },
+        { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+        { width: 850, itemsToShow: 3 },
+        { width: 1150, itemsToShow: 5, itemsToScroll: 5 },
+        { width: 1450, itemsToShow: 5 },
+        { width: 1750, itemsToShow: 6 },
+    ];
+
     return (
         <Container>
             <Carousel
                 isRTL={false}
-                itemsToShow={5}
+                breakPoints={breakPoints}
                 renderArrow={ArrowButton}
                 renderPagination={PaginationButton}
             >
-                {randomPokemonList.map(element => {
-                    return (<RandomPokemonCard
-                        id={element.id}
-                        typeName={'auto'}
-                        key={element.id}
-                    />)
-                })}
+                {pokeList ? pokeList : <div> ok</div>}
             </Carousel>
         </Container>
     )
