@@ -28,7 +28,6 @@ export const NumberContainer = styled.div`
     justify-content:center;
 
     position: absolute;
-    left: -.5rem;
     top: -.1rem;
 
     z-index: 4;
@@ -50,7 +49,6 @@ export const PokeNumber = styled.div`
     background: ${props => props.theme.colors.quintenary};
 
     position: absolute;
-    left: -.4rem;
     top: -.1rem;
 
     z-index: 3;
@@ -70,8 +68,7 @@ export const PokeType = styled.div<IPokeType>`
     background-color: ${props => props.typeColor};
 
     position: absolute;
-    right: 1.6rem;
-    top: .2rem;
+    bottom: 1.8rem;
     z-index: 8;
 
     display: flex;
