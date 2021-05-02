@@ -78,7 +78,7 @@ const HomeBoard: React.FC = () => {
                 {
                     searchIsEmpty ? <PaginatorContainer>
                         <ReactPaginate
-                            pageCount={pageCounter / 6}
+                            pageCount={pageCounter}
                             pageRangeDisplayed={2}
                             marginPagesDisplayed={1}
                             activeClassName={'active'}
