@@ -2,10 +2,9 @@ import styled from 'styled-components'
 
 
 export const Container = styled.div`
-    min-height: 57.62rem;
     width: 71.25rem;
 
-    padding: 1rem 0;
+    padding-bottom: 10.93rem;
 
     border-radius: 0 0 1rem 1rem;
 

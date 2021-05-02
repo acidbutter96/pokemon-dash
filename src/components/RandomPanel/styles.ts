@@ -10,8 +10,6 @@ export const Container = styled.div`
 
     margin: .25rem;
     padding: 1rem;
-
-    border: 2px solid red;
 `;
 
 export const Button = styled.button`
