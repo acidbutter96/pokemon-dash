@@ -56,11 +56,17 @@ export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin: 1rem 0;
 `
 
 export const LoginButton = styled.button`
     height: 2.63rem;
-    width: 7.06rem;
+    width: 17rem;
+
+    display: flex;
+    align-items: center;
+
 
     margin:0 1rem;
 
@@ -72,9 +78,22 @@ export const LoginButton = styled.button`
 
     transition: all .3s;
 
+    svg {
+        width: 2rem;
+    }
+
     &:hover{
         filter: brightness(1.1);
         transform: translateX(1px);        
+    }
+
+    .content {
+        width: 12rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
     }
     
     background-color: ${props => props.theme.colors.quintenary};

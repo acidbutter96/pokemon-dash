@@ -1,4 +1,6 @@
 import React from 'react'
+import { FcGoogle } from 'react-icons/fc'
+import { CgPokemon } from 'react-icons/cg'
 
 import {
     Container,
@@ -8,8 +10,14 @@ import {
     ButtonContainer,
     LoginButton,
 } from './styles'
+import { useAuth } from '../../hooks/firebase/auth'
 
 const LoginForm: React.FC = () => {
+
+    const {
+        logWGoogle,
+    } = useAuth()
+
     return (
         <Container>
             <FormItemContainer>
@@ -39,7 +47,21 @@ const LoginForm: React.FC = () => {
                         <LoginButton
                             type='button'
                         >
-                            Login
+                            <CgPokemon />
+                            <div className='content login'>
+                                Fazer login
+                            </div>
+                        </LoginButton>
+                    </ButtonContainer>
+                    <ButtonContainer>
+                        <LoginButton
+                            type='button'
+                            onClick={logWGoogle}
+                        >
+                            <FcGoogle />
+                            <div className='content'>
+                                Entrar com o Google
+                            </div>
                         </LoginButton>
                     </ButtonContainer>
                 </div>

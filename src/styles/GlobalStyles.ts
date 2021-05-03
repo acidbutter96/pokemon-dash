@@ -16,7 +16,7 @@ export default createGlobalStyle`
         background-color: ${props => props.theme.colors.tertiary};
 
         ::-webkit-scrollbar {
-        width: .6rem;
+            width: .6rem;
         }
 
         ::-webkit-scrollbar-thumb {

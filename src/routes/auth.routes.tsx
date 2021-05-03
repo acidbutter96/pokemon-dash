@@ -5,9 +5,10 @@ import Main from '../components/Main'
 import { useAuth } from '../hooks/firebase/auth'
 
 import Home from '../pages/Home'
-import Login from '../pages/Login'
+import Pokedex from '../pages/Pokedex'
 
-const App: React.FC = () => {
+const Auth: React.FC = () => {
+
     const {
         isLogged,
     } = useAuth()
@@ -16,12 +17,13 @@ const App: React.FC = () => {
         <Main>
             <Switch>
                 <Route path='/' exact component={Home} />
-                {!isLogged ? <></> : <Route path='/login' exact component={Login} />}
-                {!isLogged ? <></> : <Route path='/pokedex' exact><Redirect to="/" /></Route>}
-
+                <Route path='/login' exact>
+                    <Redirect to="/" />
+                </Route>
+                <Route path='/pokedex' exact component={Pokedex} />
             </Switch>
         </Main>
     )
 }
 
-export default App
+export default Auth
