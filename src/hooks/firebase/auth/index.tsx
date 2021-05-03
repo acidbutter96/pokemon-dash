@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import {
     googleLogin,
     createAndLogin,
-
+    signOutFirebase,
 } from '../config'
 
 const AuthContext = createContext({} as IAuthContext)
@@ -12,6 +12,7 @@ interface IAuthContext {
     logWGoogle: () => void;
     signOut: () => void;
     isLogged: boolean;
+    signInWEmail: (email: string, password: string) => void;
 }
 
 const AuthContextProvider: React.FC = ({ children }) => {
@@ -33,11 +34,27 @@ const AuthContextProvider: React.FC = ({ children }) => {
             })
     }
 
+    const signInWEmail = (email: string, password: string) => {
+        createAndLogin(email, password)
+            .then(auth => {
+                if (auth) {
+                    localStorage.setItem('@pokemon-dash:user', auth?.user?.uid || '')
+                    localStorage.setItem('@pokemon-dash:displayName', auth?.user?.displayName || '')
+
+                    setIsLogged(true)
+
+                    window.location.pathname = '/'
+                }
+            })
+    }
+
     const signOut = () => {
-        if (isLogged) {
-            localStorage.clear()
-            setIsLogged(false)
-        }
+        signOutFirebase().then((element) => {
+            if (isLogged && element) {
+                localStorage.clear()
+                setIsLogged(false)
+            }
+        })
     }
 
     return (
@@ -46,6 +63,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
                 logWGoogle,
                 isLogged,
                 signOut,
+                signInWEmail,
             }}
         >
             {children}

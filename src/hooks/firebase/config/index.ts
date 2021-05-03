@@ -27,7 +27,7 @@ export const createAndLogin = async (email: string, password: string) => {
 
         return result
     } catch (err) {
-        console.log(err.message)
+        console.error(err.message)
         //do something to warn
     }
 }
@@ -38,7 +38,20 @@ export const emailLogin = async (email: string, password: string) => {
 
         return result
     } catch (err) {
-        console.log(err.message)
+        console.error(err.message)
         //gotta catch all errors
     }
+}
+
+export const signOutFirebase = async () => {
+    try {
+        const result = firebase.auth().signOut()
+
+        return true
+    } catch (err) {
+        console.error(err.message)
+
+        return false
+    }
+
 }

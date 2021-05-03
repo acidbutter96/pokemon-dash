@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { CgPokemon } from 'react-icons/cg'
 
@@ -21,11 +21,42 @@ import AnimatedPokeball, { callPokeball } from '../animatedPokeball'
 const SignInForm: React.FC = () => {
     const {
         logWGoogle,
+        signInWEmail,
     } = useAuth()
 
     const [policyToggle, setPolicyToggle] = useState<boolean>(false)
 
     const checkPolicyRef = useRef<HTMLInputElement>(null)
+    const emailRef = useRef<HTMLInputElement>(null)
+    const passwordRef = useRef<HTMLInputElement>(null)
+
+    const callFirebaseSgnin = (): void => {
+        if (emailRef.current?.value && passwordRef.current?.value) {
+            signInWEmail(emailRef.current.value, passwordRef.current.value)
+        } else {
+            /* 'error' */
+        }
+    }
+
+    const formValidator = useMemo((): boolean => {
+        console.log([
+            checkPolicyRef.current?.checked,
+            emailRef.current?.value,
+            passwordRef.current?.value
+        ])
+        if (checkPolicyRef.current?.checked && emailRef.current?.value && passwordRef.current?.value) {
+            if (emailRef.current?.value !== '' && passwordRef.current?.value !== '') {
+                return true
+            }
+            return false
+        } else {
+            return false
+        }
+    }, [
+        checkPolicyRef.current?.checked,
+        emailRef.current?.value,
+        passwordRef.current?.value
+    ])
 
     return (
         <Container>
@@ -53,6 +84,7 @@ const SignInForm: React.FC = () => {
                         E-mail
                     </FormLabel>
                     <FormInput
+                        ref={emailRef}
                         type='email'
                         name='email'
                         id='email-input'
@@ -63,6 +95,7 @@ const SignInForm: React.FC = () => {
                         Senha
                     </FormLabel>
                     <FormInput
+                        ref={passwordRef}
                         type='password'
                         name='password'
                         id='password-input'
@@ -88,8 +121,8 @@ const SignInForm: React.FC = () => {
                     <ButtonContainer>
                         <SigninButton
                             type='button'
-                            disabled={!policyToggle}
-                            onClick={() => callPokeball()}
+                            disabled={!formValidator}
+                            onClick={() => callFirebaseSgnin()}
                         >
                             <CgPokemon />
                             <div className='content'>
