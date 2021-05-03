@@ -8,22 +8,25 @@ import Header from './components/Header'
 import Routes from './routes'
 
 import PokemonContextProvider from './hooks/pokemon'
-import AuthContextProvider from './hooks/auth'
+import AuthContextProvider from './hooks/firebase/auth'
+import FireStoreProvider from './hooks/firebase/firestore'
 
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={light}>
-      <AuthContextProvider>
-        <PokemonContextProvider>
-          <GlobalStyles />
-          <header>
-            <Header />
-          </header>
-          <Routes />
-        </PokemonContextProvider>
-      </AuthContextProvider>
-    </ThemeProvider>
+    <FireStoreProvider>
+      <ThemeProvider theme={light}>
+        <AuthContextProvider>
+          <PokemonContextProvider>
+            <GlobalStyles />
+            <header>
+              <Header />
+            </header>
+            <Routes />
+          </PokemonContextProvider>
+        </AuthContextProvider>
+      </ThemeProvider>
+    </FireStoreProvider>
   )
 }
 
