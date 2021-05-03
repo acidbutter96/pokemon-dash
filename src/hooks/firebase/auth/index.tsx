@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
-import { googleLogin } from '../config'
+import {
+    googleLogin,
+} from '../config'
 
 const AuthContext = createContext({} as IAuthContext)
 

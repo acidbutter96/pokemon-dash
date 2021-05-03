@@ -13,8 +13,32 @@ export const googleLogin = async () => {
 
     try {
         const result = await firebase.auth().signInWithPopup(provider)
+
         return result
     } catch (err) {
         console.error(err)
+        //then deal with that errors marcos :x
+    }
+}
+
+export const createAndLogin = async (email: string, password: string) => {
+    try {
+        const result = await firebase.auth().createUserWithEmailAndPassword(email, password)
+
+        return result
+    } catch (err) {
+        console.log(err.message)
+        //do something to warn
+    }
+}
+
+export const emailLogin = async (email: string, password: string) => {
+    try {
+        const result = await firebase.auth().signInWithEmailAndPassword(email, password)
+
+        return result
+    } catch (err) {
+        console.log(err.message)
+        //gotta catch all errors
     }
 }

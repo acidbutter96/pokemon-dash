@@ -98,3 +98,29 @@ export const LoginButton = styled.button`
     
     background-color: ${props => props.theme.colors.quintenary};
 `
+
+export const RecoveryContainer = styled.div`
+    min-width: 20rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 1rem 0;
+
+    font-family: 'Poppins', sans-serif;
+`
+
+export const RecoveryPassword = styled.a`
+    margin: 0 .5rem;
+
+    font-weight: 800;
+    color: ${props => props.theme.colors.black};
+
+    transition: all .3s;
+
+    &:hover{
+        color: ${props => props.theme.colors.quintenary};
+    }
+
+`
