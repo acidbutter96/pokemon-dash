@@ -4,8 +4,6 @@ import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 
 import RandomPokemonCard from '../RandomPokemonCard'
 
-import { usePokemon } from '../../hooks/pokemon'
-
 import {
     Container,
     Button,
@@ -13,15 +11,9 @@ import {
     PageContainer,
 } from './styles'
 
-interface IRandomPokemonProps {
-    id: number;
-}
+
 
 const RandomPanel: React.FC = () => {
-    const {
-        pageCounter,
-    } = usePokemon()
-
     const [pokeList, setPokeList] = useState<JSX.Element[]>([])
 
     useEffect(() => {

@@ -1,4 +1,7 @@
 import React from 'react'
+
+import LoginForm from '../../components/LoginForm'
+
 import {
     Container,
 } from './styles'
@@ -6,7 +9,7 @@ import {
 const Login: React.FC = () => {
     return (
         <Container>
-            login
+            <LoginForm />
         </Container>)
 }
 

@@ -12,6 +12,7 @@ export default createGlobalStyle`
         width: 100vw;
 
         overflow-x: hidden;
+        ${window.location.href.split('/')[3] === 'login' ? 'overflow-y: hidden;' : ''}
         background-color: ${props => props.theme.colors.tertiary};
 
         ::-webkit-scrollbar {

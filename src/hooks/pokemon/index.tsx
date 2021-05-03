@@ -65,7 +65,6 @@ const PokemonContextProvider: React.FC = ({ children }) => {
             .then((response) => {
                 setPokemonArray(response[0].results)
                 setCountItems(response[0].count)
-                console.log(response[0].count)
             })
     }, [])
 

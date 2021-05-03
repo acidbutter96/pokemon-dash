@@ -22,15 +22,21 @@ const Header: React.FC = () => {
     return (
         <Container>
             <img src={logoPokemon} alt="Logo Pokémon" />
-            <SearchBar
-                ref={inputRef}
-                placeholder="Search Pokémon"
-                onChange={() => { setSearch(inputRef.current?.value || '') }}
-                onClick={() => setFirstSearch()}
-            />
-            <LoginButton type="button">
-                login
-            </LoginButton>
+            {
+                window.location.href.split('/')[3] === 'login' ?
+                    <div></div> :
+                    (<><SearchBar
+                        ref={inputRef}
+                        placeholder="Search Pokémon"
+                        onChange={() => { setSearch(inputRef.current?.value || '') }}
+                        onClick={() => setFirstSearch()}
+                    />
+                        <LoginButton type="button">
+                            login
+                        </LoginButton>
+                    </>
+                    )
+            }
             <img src={logoCompeti} alt="" />
         </Container>
     )
