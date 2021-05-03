@@ -27,13 +27,17 @@ const AuthContextProvider: React.FC = ({ children }) => {
                     localStorage.setItem('@pokemon-dash:displayName', auth?.user?.displayName || '')
 
                     setIsLogged(true)
+
+                    window.location.pathname = '/'
                 }
             })
     }
 
     const signOut = () => {
-        localStorage.clear()
-        setIsLogged(false)
+        if (isLogged) {
+            localStorage.clear()
+            setIsLogged(false)
+        }
     }
 
     return (

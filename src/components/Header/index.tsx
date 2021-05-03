@@ -16,7 +16,12 @@ import logoCompeti from '../../assets/images/navbar/logo.svg'
 import { usePokemon } from '../../hooks/pokemon'
 import { useAuth } from '../../hooks/firebase/auth'
 
+
 const Header: React.FC = () => {
+    let location = window.location.pathname
+
+    console.log(location)
+
     const {
         setSearch,
         setFirstSearch,
@@ -24,6 +29,7 @@ const Header: React.FC = () => {
 
     const {
         isLogged,
+        signOut,
     } = useAuth()
 
     const [focusBar, setFocusBar] = useState<boolean>(false)
@@ -40,9 +46,11 @@ const Header: React.FC = () => {
 
     return (
         <Container>
-            <img src={logoPokemon} alt='Logo Pokémon' />
+            <a href='/'>
+                <img src={logoPokemon} alt='Logo Pokémon' />
+            </a>
             {
-                window.location.href.split('/')[3] === 'login' ?
+                location === '/login' ?
                     <div></div> :
                     (<><SearchBar
                         ref={inputRef}
@@ -77,7 +85,7 @@ const Header: React.FC = () => {
                                     pokedex
                                 </LoggedButton>
                                 <LoggedButton
-                                    onClick={() => console.log('sair')}
+                                    onClick={() => signOut()}
                                 >
                                     sair
                                 </LoggedButton>
@@ -86,7 +94,13 @@ const Header: React.FC = () => {
                     </>
                     )
             }
-            <img src={logoCompeti} alt='' />
+            <a
+                href='https://competisistemas.com.br/'
+                target='_blank'
+                rel='noreferrer'
+            >
+                <img src={logoCompeti} alt='Competi - Sistemas e Automação Comercial' />
+            </a>
         </Container>
     )
 }
