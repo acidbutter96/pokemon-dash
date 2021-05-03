@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    height: 30rem;
+    min-height: 30rem;
     width: 30rem;
 
     display: flex;
@@ -20,7 +20,7 @@ export const FormItemContainer = styled.form`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 1.5rem;
+    gap: .5rem;
 
 
 `
@@ -106,7 +106,7 @@ export const RecoveryContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    margin: 1rem 0;
+    margin: 1.2rem 0;
 
     font-family: 'Poppins', sans-serif;
 `

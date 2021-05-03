@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    height: 30rem;
+    min-height: 30rem;
     width: 30rem;
 
     display: flex;
@@ -20,13 +20,12 @@ export const FormItemContainer = styled.form`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 1.5rem;
-
-
+    gap: 1rem;
 `
 
 export const FormLabel = styled.div`
     font-family: 'Poppins', sans-serif;
+    color: ${props => props.theme.colors.black};
 
     padding-bottom: .5rem;
     
@@ -40,6 +39,7 @@ export const FormInput = styled.input`
     border-radius: .6rem;
 
     font-family: 'Poppins', sans-serif;
+    color: ${props => props.theme.colors.black};
 
     padding: 0 .5rem;
 
@@ -169,4 +169,16 @@ export const PrivacyPolicyContainer = styled.div`
             color: ${props => props.theme.colors.quintenary};
         }
     }
+`
+
+export const Title = styled.div`
+    padding-bottom: 2rem;
+    font-family: 'Pokemon', sans-serif;
+    font-size: 2rem;
+    color: ${props => props.theme.colors.yellowpokemon};
+    text-shadow:
+        2px 2px 0px ${props => props.theme.colors.bluepokemon},
+        -4px 0 0px ${props => props.theme.colors.bluepokemon},
+        -4px 3px 0px ${props => props.theme.colors.bluepokemon},
+        -2.5px 4px 0px ${props => props.theme.colors.bluepokemon};
 `

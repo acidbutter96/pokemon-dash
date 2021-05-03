@@ -11,9 +11,12 @@ import {
     SigninButton,
     FormTextContainer,
     PrivacyPolicyContainer,
+    Title,
 } from './styles'
 
 import { useAuth } from '../../hooks/firebase/auth'
+
+import AnimatedPokeball, { callPokeball } from '../animatedPokeball'
 
 const SignInForm: React.FC = () => {
     const {
@@ -26,6 +29,10 @@ const SignInForm: React.FC = () => {
 
     return (
         <Container>
+            <AnimatedPokeball id='teste' />
+            <Title>
+                Registro
+                </Title>
             <FormItemContainer>
                 <ButtonContainer>
                     <SigninButton
@@ -82,6 +89,7 @@ const SignInForm: React.FC = () => {
                         <SigninButton
                             type='button'
                             disabled={!policyToggle}
+                            onClick={() => callPokeball()}
                         >
                             <CgPokemon />
                             <div className='content'>

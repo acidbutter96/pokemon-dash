@@ -14,17 +14,19 @@ const App: React.FC = () => {
         isLogged,
     } = useAuth()
 
+    console.log(isLogged)
+
     return (
 
         <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/login' exact component={isLogged ? Home : Login} />
             <Route path='/signin' exact component={SignIn} />
+            <Route path='/privacy-police' exact component={PrivacyPolicy} />
+
             <Route path='/pokedex' exact>
                 <Redirect to='/' />
             </Route>
-            <Route path='/privacy-police' exact component={PrivacyPolicy} />
-
             <Route path='*'>
                 <Redirect to='/' />
             </Route>

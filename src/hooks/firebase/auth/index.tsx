@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 
 import {
     googleLogin,
+    createAndLogin,
+
 } from '../config'
 
 const AuthContext = createContext({} as IAuthContext)
@@ -13,13 +15,9 @@ interface IAuthContext {
 }
 
 const AuthContextProvider: React.FC = ({ children }) => {
-    const [isLogged, setIsLogged] = useState<boolean>(false)
+    const logged = (typeof localStorage.getItem('@pokemon-dash:user') === 'string' && localStorage.getItem('@pokemon-dash:user') !== '') || false
 
-    useEffect(() => {
-        const logged = (typeof localStorage.getItem('@pokemon-dash:user') === 'string' && localStorage.getItem('@pokemon-dash:user') !== '') || false
-
-        setIsLogged(logged)
-    }, [])
+    const [isLogged, setIsLogged] = useState<boolean>(logged)
 
     const logWGoogle = () => {
         googleLogin()
