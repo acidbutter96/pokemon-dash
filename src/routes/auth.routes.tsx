@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Home from '../pages/Home'
 import Pokedex from '../pages/Pokedex'
+import PrivacyPolicy from '../pages/PrivacyPolicy'
 
 const Auth: React.FC = () => {
 
@@ -11,8 +12,15 @@ const Auth: React.FC = () => {
             <Route path='/' exact component={Home} />
             <Route path='/login' exact>
                 <Redirect to="/" />
+            </Route><Route path='/signin' exact>
+                <Redirect to="/" />
             </Route>
             <Route path='/pokedex' exact component={Pokedex} />
+            <Route path='/privacy-police' exact component={PrivacyPolicy} />
+
+            <Route path='*'>
+                <Redirect to='/' />
+            </Route>
         </Switch>
     )
 }

@@ -60,7 +60,7 @@ export const ButtonContainer = styled.div`
     margin: 1rem 0;
 `
 
-export const LoginButton = styled.button`
+export const SigninButton = styled.button`
     height: 2.63rem;
     width: 17rem;
 
@@ -76,6 +76,8 @@ export const LoginButton = styled.button`
     color: ${props => props.theme.colors.white};
     font-size: 1.2rem;
 
+    background-color: ${props => props.theme.colors.quintenary};
+
     transition: all .3s;
 
     svg {
@@ -87,6 +89,18 @@ export const LoginButton = styled.button`
         transform: translateX(1px);        
     }
 
+    &:disabled{
+        opacity: .8;
+
+        cursor: default;
+
+        &:hover{
+            filter: brightness(1);
+            transform: translateX(0);
+              
+        }
+    }
+
     .content {
         width: 12rem;
 
@@ -95,18 +109,18 @@ export const LoginButton = styled.button`
         justify-content: center;
 
     }
-    
-    background-color: ${props => props.theme.colors.quintenary};
+
+    .google{
+        font-size: 1.1rem;
+    }
 `
 
-export const RecoveryContainer = styled.div`
+export const FormTextContainer = styled.div`
     min-width: 20rem;
     
     display: flex;
     justify-content: center;
     align-items: center;
-
-    margin: 1rem 0;
 
     font-family: 'Poppins', sans-serif;
 `
@@ -122,16 +136,37 @@ export const RecoveryPassword = styled.a`
     &:hover{
         color: ${props => props.theme.colors.quintenary};
     }
+
 `
 
-export const Title = styled.div`
-    padding-bottom: 2rem;
-    font-family: 'Pokemon', sans-serif;
-    font-size: 2rem;
-    color: ${props => props.theme.colors.yellowpokemon};
-    text-shadow:
-        2px 2px 0px ${props => props.theme.colors.bluepokemon},
-        -4px 0 0px ${props => props.theme.colors.bluepokemon},
-        -4px 3px 0px ${props => props.theme.colors.bluepokemon},
-        -2.5px 4px 0px ${props => props.theme.colors.bluepokemon};
+export const PrivacyPolicyContainer = styled.div`
+    min-width: 20rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: .9rem;
+
+    input {
+        height: 1rem;
+        width: 1rem;
+
+        margin-right: .7rem;
+    }
+
+    a {
+        font-family: 'Poppins', sans-serif;
+        font-size: .9rem;
+        color: ${props => props.theme.colors.black};
+
+        margin-left: .3rem;
+
+        transition: all .3s;
+
+        &:hover{
+            color: ${props => props.theme.colors.quintenary};
+        }
+    }
 `

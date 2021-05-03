@@ -18,10 +18,6 @@ import { useAuth } from '../../hooks/firebase/auth'
 
 
 const Header: React.FC = () => {
-    let location = window.location.pathname
-
-    console.log(location)
-
     const {
         setSearch,
         setFirstSearch,
@@ -44,13 +40,16 @@ const Header: React.FC = () => {
 
     const inputRef = useRef<HTMLInputElement>(null)
 
+    let location = window.location.pathname
+    const isHidden = location === '/login' || location === '/signin'
+
     return (
         <Container>
             <a href='/'>
                 <img src={logoPokemon} alt='Logo Pokémon' />
             </a>
             {
-                location === '/login' ?
+                isHidden ?
                     <div></div> :
                     (<><SearchBar
                         ref={inputRef}

@@ -16,7 +16,8 @@ const light = {
         info: '#49DBDF',
         warning: '#FF6961',
 
-        fire: '#F25D52',
+        yellowpokemon: '#fccf00',
+        bluepokemon: '#2468b1',
     },
 };
 

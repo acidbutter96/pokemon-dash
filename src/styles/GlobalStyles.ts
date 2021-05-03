@@ -7,6 +7,14 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
+    @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+
+    @font-face {
+      font-family: 'Pokemon';
+      src: url('//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot');
+      src: url('//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix') format('embedded-opentype'), url('//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2') format('woff2'), url('//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff') format('woff'), url('//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf') format('truetype'), url('//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon') format('svg');
+    }
+
     html, body, #root {
         height: 100vh;
         width: 100vw;
@@ -38,8 +46,6 @@ export default createGlobalStyle`
     button {
         cursor: pointer;
     }
-
-    
 
     overflow-x:hidden
 `

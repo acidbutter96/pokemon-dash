@@ -11,6 +11,7 @@ import {
     LoginButton,
     RecoveryContainer,
     RecoveryPassword,
+    Title,
 } from './styles'
 import { useAuth } from '../../hooks/firebase/auth'
 
@@ -22,6 +23,9 @@ const LoginForm: React.FC = () => {
 
     return (
         <Container>
+            <Title>
+                POKÉMON DASH!
+            </Title>
             <FormItemContainer>
                 <div>
                     <FormLabel>
@@ -71,6 +75,12 @@ const LoginForm: React.FC = () => {
                         <RecoveryPassword
                             href='#'
                         >Recuperar</RecoveryPassword>
+                    </RecoveryContainer>
+                    <RecoveryContainer>
+                        <span> Não possui cadastro?</span>
+                        <RecoveryPassword
+                            href='/signin'
+                        >Cadastre-se</RecoveryPassword>
                     </RecoveryContainer>
                 </div>
             </FormItemContainer>

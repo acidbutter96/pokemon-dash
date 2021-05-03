@@ -19,7 +19,8 @@ declare module 'styled-components' {
             info: string;
             warning: string;
 
-            fire: string;
+            yellowpokemon: string;
+            bluepokemon: string;
         },
     };
 }
