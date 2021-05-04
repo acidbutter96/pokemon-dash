@@ -78,7 +78,6 @@ const AttributesBoard: React.FC<IAttributesBoard> = ({ id }) => {
                     <div>
                         <NameBar>
                             <h1>
-
                                 Nome Pokémon
                             </h1>
                         </NameBar>
@@ -87,6 +86,7 @@ const AttributesBoard: React.FC<IAttributesBoard> = ({ id }) => {
                         <AddButton>
                             <IoMdAdd />
                         </AddButton>
+                        Adicionar a Pokédex
                     </div>
                 </AttributesContainer>
             </PokemonAttributeContainer>

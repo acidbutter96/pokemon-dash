@@ -14,7 +14,7 @@ const light = {
 
         success: '#3AA05B',
         info: '#49DBDF',
-        warning: '#FF6961',
+        warning: '#F25D52',
 
         yellowpokemon: '#fccf00',
         bluepokemon: '#2468b1',

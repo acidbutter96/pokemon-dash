@@ -8,9 +8,10 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     
-    border: 0 2px solid ${props => props.theme.colors.black};
+    border: 2px solid ${props => props.theme.colors.black};
+    border-radius: 1rem;
 
-    background-color:${props => props.theme.colors.primary};
+    background-color:${props => props.theme.colors.quatenary};
 `
 
 export const NameBar = styled.div`
@@ -48,6 +49,9 @@ export const AttributesContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+
+        font-family: 'Poppins', sans-serif;
+        color: ${props => props.theme.colors.white};
     }
 `
 

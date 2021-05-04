@@ -1,14 +1,22 @@
 import React from 'react'
+
 import {
     Container,
+    BoardContainer,
 } from './styles'
 
-const Pokedex: React.FC = () => {
+import PokedexBoard from '../../components/PokedexBoard'
+import Footer from '../../components/Footer'
+
+const Home: React.FC = () => {
     return (
         <Container>
-            Pokedex
+            <BoardContainer>
+                <PokedexBoard />
+            </BoardContainer>
+            <Footer />
         </Container>
     )
 }
 
-export default Pokedex
+export default Home
