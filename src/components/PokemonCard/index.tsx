@@ -19,6 +19,7 @@ import { IPokemon } from '../../hooks/pokemon/index'
 
 import { capitalize } from '../../utils/capitalize'
 import { colorbytype } from '../../utils/colorbytype'
+import { useFireStore } from '../../hooks/firebase/firestore'
 
 type PokemonCardProps = {
     id: number;
@@ -26,6 +27,10 @@ type PokemonCardProps = {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ id, typeName }) => {
+    const {
+        savePokemon,
+    } = useFireStore()
+
     const [pokeInfo, setPokeInfo] = useState<IPokemon>({
         name: '',
         sprites: {
@@ -65,7 +70,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, typeName }) => {
             <PokeImage>
                 <PokebuttonContainer>
                     <AddButton
-                        href='#'
+                        onClick={() => savePokemon(`${id}`)}
                     >
                         <IoMdAdd />
                     </AddButton>

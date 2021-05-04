@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoMdEye, IoIosTrash } from 'react-icons/io'
 
 import TypeBadge from '../TypeBadge'
@@ -11,23 +11,59 @@ import {
     DeleteButton,
 } from './styles'
 
-const PokedexRow: React.FC = () => {
+import { getPokemonInfo } from '../../providers/pokeapi'
+
+import { IPokemon } from '../../hooks/pokemon/index'
+
+interface IPokedexRow {
+    id: string;
+}
+
+const PokedexRow: React.FC<IPokedexRow> = ({ id }) => {
+
+    const [pokeInfo, setPokeInfo] = useState<IPokemon>({
+        name: '',
+        sprites: {
+            front_default: ''
+        },
+        types: [
+            {
+                slot: '1',
+                name: '',
+                id: 1,
+            }
+        ]
+    })
+
+    useEffect(() => {
+        getPokemonInfo(parseInt(id))
+            .then(response => {
+                if (response) {
+                    console.log(response[0])
+                    setPokeInfo(response[0])
+                }
+            })
+    }, [id])
+
+    console.log(pokeInfo)
+
     return (
         <TableRow>
             <td>
                 <ImageContainer>
-                    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png' alt='' />
+                    <img src={`${pokeInfo?.sprites.front_default || ''}`} alt={`${pokeInfo.name} || ''`} />
                 </ImageContainer>
             </td>
-            <td>Charmander</td>
+            <td>{pokeInfo?.name || ''}</td>
             <td>
                 <TypeBadge
-                    name='fire'
+                    name={`${pokeInfo?.types[0].name || ''}`}
                 ></TypeBadge>
             </td>
             <td>
                 <ActionContainer>
                     <PreviewButton
+                        href={`/pokemon/attributes/${id}`}
                     >
                         <IoMdEye />
                     </PreviewButton>

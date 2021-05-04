@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
+import PokedexRow from '../PokedexRow'
 import {
     Container,
     UserName,
@@ -9,12 +10,26 @@ import {
 } from './styles'
 
 import { usePokemon } from '../../hooks/pokemon'
-import PokedexRow from '../PokedexRow'
+import { useFireStore } from '../../hooks/firebase/firestore'
+
+interface IPokemon {
+    pokemonId: string;
+    date: string;
+}
 
 const PokedexBoard: React.FC = () => {
     const {
 
     } = usePokemon()
+
+    const {
+        getData,
+    } = useFireStore()
+
+    const [pokeArray, setPokeArray] = useState<IPokemon[]>()
+
+
+    getData().then(element => setPokeArray(element.pokedex))
 
     return (
         <Container>
@@ -31,7 +46,16 @@ const PokedexBoard: React.FC = () => {
                     </tr>
                 </TableHeader>
                 <TableBody>
-                    <PokedexRow />
+                    {
+                        pokeArray ?
+                            pokeArray.map(
+                                element => <PokedexRow
+                                    id={element.pokemonId}
+                                    key={element.pokemonId}
+                                />
+                            ) : <div>
+                                Você ainda não possui pokémons
+                        </div>}
                 </TableBody>
             </TableContainer>
         </Container>
