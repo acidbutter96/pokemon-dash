@@ -121,7 +121,7 @@ export const PokebuttonContainer = styled.div`
     transition: all .3s;
 `
 
-export const PreviewButton = styled.div`
+export const PreviewButton = styled.a`
     width: 2.81rem;
     height: 2.81rem;
 

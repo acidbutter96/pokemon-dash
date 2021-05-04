@@ -64,12 +64,17 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, typeName }) => {
             </PokeType>
             <PokeImage>
                 <PokebuttonContainer>
-                    <PreviewButton>
+                    <AddButton
+                        href='#'
+                    >
                         <IoMdAdd />
-                    </PreviewButton>
-                    <AddButton>
-                        <IoMdEye />
                     </AddButton>
+                    <PreviewButton
+                        href={`/pokemon/attributes/${id}`}
+                        target='_blank'
+                    >
+                        <IoMdEye />
+                    </PreviewButton>
                 </PokebuttonContainer>
                 <ImageContainer>
                     <img src={pokeInfo?.sprites.front_default} alt={`${pokeInfo?.types[0]?.name}`} />

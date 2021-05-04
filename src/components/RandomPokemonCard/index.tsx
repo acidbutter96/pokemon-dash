@@ -60,11 +60,14 @@ const RandomPokemonCard: React.FC<IPokemonCardProps> = ({ id, typeName }) => {
             <PokeNumber />
             <PokeImage>
                 <PokebuttonContainer>
-                    <PreviewButton>
-                        <IoMdAdd />
+                    <PreviewButton
+                        href={`/pokemon/attributes/${id}`}
+                        target='_blank'
+                    >
+                        <IoMdEye />
                     </PreviewButton>
                     <AddButton>
-                        <IoMdEye />
+                        <IoMdAdd />
                     </AddButton>
                 </PokebuttonContainer>
                 <ImageContainer>

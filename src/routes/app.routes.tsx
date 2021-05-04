@@ -6,6 +6,7 @@ import { useAuth } from '../hooks/firebase/auth'
 
 import Home from '../pages/Home'
 import Login from '../pages/Login'
+import PokemonAttributes from '../pages/PokemonAttributes'
 import PrivacyPolicy from '../pages/PrivacyPolicy'
 import SignIn from '../pages/SignIn'
 
@@ -22,8 +23,8 @@ const App: React.FC = () => {
             <Route path='/' exact component={Home} />
             <Route path='/login' exact component={isLogged ? Home : Login} />
             <Route path='/signin' exact component={SignIn} />
+            <Route path='/pokemon/attributes/:id' exact component={PokemonAttributes} />
             <Route path='/privacy-police' exact component={PrivacyPolicy} />
-
             <Route path='/pokedex' exact>
                 <Redirect to='/' />
             </Route>
