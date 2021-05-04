@@ -14,12 +14,17 @@ import {
 import { getPokemonInfo } from '../../providers/pokeapi'
 
 import { IPokemon } from '../../hooks/pokemon/index'
+import { useFireStore } from '../../hooks/firebase/firestore'
 
 interface IPokedexRow {
     id: string;
+    index: number;
 }
 
-const PokedexRow: React.FC<IPokedexRow> = ({ id }) => {
+const PokedexRow: React.FC<IPokedexRow> = ({ id, index }) => {
+    const {
+        deletePokemon,
+    } = useFireStore()
 
     const [pokeInfo, setPokeInfo] = useState<IPokemon>({
         name: '',
@@ -34,18 +39,19 @@ const PokedexRow: React.FC<IPokedexRow> = ({ id }) => {
             }
         ]
     })
+    const [executed, setExecutedStatus] = useState<boolean>(false)
 
     useEffect(() => {
-        getPokemonInfo(parseInt(id))
-            .then(response => {
-                if (response) {
-                    console.log(response[0])
-                    setPokeInfo(response[0])
-                }
-            })
+        if (!executed) {
+            getPokemonInfo(parseInt(id))
+                .then(response => {
+                    if (response) {
+                        setPokeInfo(response[0])
+                    }
+                })
+            setExecutedStatus(true)
+        }
     }, [id])
-
-    console.log(pokeInfo)
 
     return (
         <TableRow>
@@ -67,7 +73,9 @@ const PokedexRow: React.FC<IPokedexRow> = ({ id }) => {
                     >
                         <IoMdEye />
                     </PreviewButton>
-                    <DeleteButton>
+                    <DeleteButton
+                        onClick={() => deletePokemon(index)}
+                    >
                         <IoIosTrash />
                     </DeleteButton>
                 </ActionContainer>

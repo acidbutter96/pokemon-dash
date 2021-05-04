@@ -46,6 +46,17 @@ interface IPokemonResponseItem {
     slot: number;
 };
 
+interface IStat {
+    name: string;
+    url: string;
+};
+
+interface IStats {
+    base_stat: number;
+    effort: number;
+    stat: IStat;
+}
+
 export const api = axios.create({
     baseURL: 'https://pokeapi.co/api/v2/',
 })
@@ -140,6 +151,19 @@ export const getPokemonInfo = async (id: number): Promise<IPokemon[]> => {
                 id: idFromPokemonUrl(element.type.url),
             })),
         }]
+
+        return response
+    } catch (err) {
+        console.error(err)
+        return []
+    }
+}
+
+export const getPokemonStats = async (id: number): Promise<IStats[]> => {
+    try {
+        const { data } = await api.get(`pokemon/${id}`)
+
+        const response: IStats[] = data.stats
 
         return response
     } catch (err) {

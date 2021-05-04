@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Chart from 'react-apexcharts'
 import { IoMdAdd } from 'react-icons/io'
 
@@ -12,7 +12,10 @@ import {
     AddButton,
 } from './styles'
 
-import { usePokemon } from '../../hooks/pokemon'
+import { IPokemon, usePokemon } from '../../hooks/pokemon'
+import { getPokemonInfo, getPokemonStats } from '../../providers/pokeapi'
+import { capitalize } from '../../utils/capitalize'
+import { useFireStore } from '../../hooks/firebase/firestore'
 
 interface IAttributesBoard {
     id: string;
@@ -20,7 +23,54 @@ interface IAttributesBoard {
 
 const AttributesBoard: React.FC<IAttributesBoard> = ({ id }) => {
     const {
-    } = usePokemon()
+        savePokemon,
+    } = useFireStore()
+
+    const [pokeInfo, setPokeInfo] = useState<IPokemon>({
+        name: '',
+        sprites: {
+            front_default: ''
+        },
+        types: [
+            {
+                slot: '1',
+                name: '',
+                id: 1,
+            }
+        ]
+    })
+    const [executed, setExecutedStatus] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (!executed) {
+            getPokemonInfo(parseInt(id))
+                .then(response => {
+                    if (response) {
+                        setPokeInfo(response[0])
+                    }
+                })
+            setExecutedStatus(true)
+        }
+    }, [id])
+
+    const [dataset, setDataSet] = useState<Array<number>>([0, 0, 0, 0, 0, 0])
+    const [categoriesset, setCategoriesSet] = useState<Array<string>>(['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed'])
+
+
+
+    useEffect(() => {
+        getPokemonStats(parseInt(id))
+            .then(element => {
+                let data: Array<number> = []
+                let categories: Array<string> = []
+                element.forEach(value => {
+                    data.push(value.base_stat)
+                    categories.push(value.stat.name)
+                })
+                setDataSet(data)
+                setCategoriesSet(categories)
+            })
+    }, [])
 
     const data = {
         options: {
@@ -28,7 +78,8 @@ const AttributesBoard: React.FC<IAttributesBoard> = ({ id }) => {
                 id: 'attributes',
             },
             xaxis: {
-                categories: ['HP', 'Ataque', 'Defesa', 'Ataque Especial', 'Defesa Especial', 'Velocidade']
+                categories: categoriesset,
+                range: 100,
             },
             fill: {
                 colors: ['#fccf00'],
@@ -41,6 +92,7 @@ const AttributesBoard: React.FC<IAttributesBoard> = ({ id }) => {
             },
             plotOptions: {
                 radar: {
+                    size: 150,
                     polygons: {
                         strokeColor: ['#fff'],
                         connectorColors: '#fff',
@@ -53,7 +105,7 @@ const AttributesBoard: React.FC<IAttributesBoard> = ({ id }) => {
         },
         series: [{
             name: 'Pokémon',
-            data: [30, 40, 35, 50, 49, 60]
+            data: dataset
         }],
     }
 
@@ -72,18 +124,20 @@ const AttributesBoard: React.FC<IAttributesBoard> = ({ id }) => {
                 <AttributesContainer>
                     <div>
                         <PokemonImage>
-                            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png' alt='' />
+                            <img src={`${pokeInfo.sprites.front_default}`} alt={`${pokeInfo.name}`} />
                         </PokemonImage>
                     </div>
                     <div>
                         <NameBar>
                             <h1>
-                                Nome Pokémon
+                                {pokeInfo.name}
                             </h1>
                         </NameBar>
                     </div>
                     <div>
-                        <AddButton>
+                        <AddButton
+                            onClick={() => savePokemon(id)}
+                        >
                             <IoMdAdd />
                         </AddButton>
                         Adicionar a Pokédex

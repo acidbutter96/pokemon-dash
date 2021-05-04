@@ -70,7 +70,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
                     }
                 }, (500))
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error(err))
     }
 
     const signInWEmail = (email: string, password: string) => {

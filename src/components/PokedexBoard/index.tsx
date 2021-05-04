@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import PokedexRow from '../PokedexRow'
 import {
@@ -26,10 +26,15 @@ const PokedexBoard: React.FC = () => {
         getData,
     } = useFireStore()
 
-    const [pokeArray, setPokeArray] = useState<IPokemon[]>()
+    const [pokeArray, setPokeArray] = useState<IPokemon[]>([])
 
 
-    getData().then(element => setPokeArray(element.pokedex))
+    useEffect(() => {
+        getData()
+            .then(element => setPokeArray(element.pokedex))
+    }, [])
+
+    var key = -1
 
     return (
         <Container>
@@ -47,12 +52,16 @@ const PokedexBoard: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        pokeArray ?
+                        pokeArray.length !== 0 ?
                             pokeArray.map(
-                                element => <PokedexRow
-                                    id={element.pokemonId}
-                                    key={element.pokemonId}
-                                />
+                                element => {
+                                    key += 1
+                                    return <PokedexRow
+                                        id={element.pokemonId}
+                                        index={key}
+                                        key={key}
+                                    />
+                                }
                             ) : <div>
                                 Você ainda não possui pokémons
                         </div>}

@@ -39,11 +39,6 @@ const SignInForm: React.FC = () => {
     }
 
     const formValidator = useMemo((): boolean => {
-        console.log([
-            checkPolicyRef.current?.checked,
-            emailRef.current?.value,
-            passwordRef.current?.value
-        ])
         if (checkPolicyRef.current?.checked && emailRef.current?.value && passwordRef.current?.value) {
             if (emailRef.current?.value !== '' && passwordRef.current?.value !== '') {
                 return true
