@@ -3,13 +3,17 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     width: 71.25rem;
-    min-height: 25rem;
+    height: 40rem;
 
     border-radius: 0 0 1rem 1rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    top: 0;
+
+    margin-bottom: 4rem;
 
     background-color:${props => props.theme.colors.secondary};
 `
@@ -60,7 +64,7 @@ export const TableHeader = styled.div`
 
 export const TableBody = styled.div`
     width: 71.25rem;
-    height: 40vh;
+    max-height: 60vh;
 
     padding: 0 1rem;
 

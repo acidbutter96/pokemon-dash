@@ -15,7 +15,9 @@ import {
 } from './styles'
 
 import { getPokemonInfo } from '../../providers/pokeapi'
+
 import { IPokemon } from '../../hooks/pokemon/index'
+import { useFireStore } from '../../hooks/firebase/firestore'
 
 import { capitalize } from '../../utils/capitalize'
 import { colorbytype } from '../../utils/colorbytype'
@@ -26,6 +28,10 @@ interface IPokemonCardProps {
 }
 
 const RandomPokemonCard: React.FC<IPokemonCardProps> = ({ id, typeName }) => {
+    const {
+        savePokemon,
+    } = useFireStore()
+
     const [pokeInfo, setPokeInfo] = useState<IPokemon>({
         name: '',
         sprites: {
@@ -66,7 +72,9 @@ const RandomPokemonCard: React.FC<IPokemonCardProps> = ({ id, typeName }) => {
                     >
                         <IoMdEye />
                     </PreviewButton>
-                    <AddButton>
+                    <AddButton
+                        onClick={() => savePokemon(`${id}`)}
+                    >
                         <IoMdAdd />
                     </AddButton>
                 </PokebuttonContainer>

@@ -15,11 +15,13 @@ import {
 } from './styles'
 
 import { getPokemonInfo } from '../../providers/pokeapi'
+
 import { IPokemon } from '../../hooks/pokemon/index'
+import { useFireStore } from '../../hooks/firebase/firestore'
 
 import { capitalize } from '../../utils/capitalize'
 import { colorbytype } from '../../utils/colorbytype'
-import { useFireStore } from '../../hooks/firebase/firestore'
+
 
 type PokemonCardProps = {
     id: number;
