@@ -17,6 +17,8 @@ export const googleLogin = async () => {
         return result
     } catch (err) {
         console.error(err)
+
+        return err
         //then deal with that errors marcos :x
     }
 }
@@ -28,6 +30,8 @@ export const createAndLogin = async (email: string, password: string) => {
         return result
     } catch (err) {
         console.error(err.message)
+
+        return err
         //do something to warn
     }
 }
@@ -39,6 +43,8 @@ export const emailLogin = async (email: string, password: string) => {
         return result
     } catch (err) {
         console.error(err.message)
+
+        return err
         //gotta catch all errors
     }
 }

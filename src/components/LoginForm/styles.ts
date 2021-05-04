@@ -135,3 +135,12 @@ export const Title = styled.div`
         -4px 3px 0px ${props => props.theme.colors.bluepokemon},
         -2.5px 4px 0px ${props => props.theme.colors.bluepokemon};
 `
+
+export const ErrorBar = styled.div`
+    display: flex;
+    justify-content: center;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: red;
+`
