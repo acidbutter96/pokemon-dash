@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+<p align="center">
+   <img src="./src/images/logo-pokemon.svg" alt="Pokemon dash" width="300"/>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Inline docs](http://inch-ci.org/github/acidbutter96/pokemon-dash.svg?branch=main)](http://inch-ci.org/github/acidbutter96/pokemon-dash)
 
-## Available Scripts
+<div align="center">
+  <h1>
+    Pokémon Dash - competi
+  </h1>
+</div>
 
-In the project directory, you can run:
+# :pushpin: Conteúdo
 
-### `yarn start`
+* [Tecnologias](#computer-technologies)
+* [Como executar](#how-to-run)
+* [Issues e sugestões?](#bugs)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# :computer: Tecnologias
+O projeto foi criado utilizando:
 
-### `yarn test`
+* [Typescript](https://www.typescriptlang.org/)      
+* [React](https://reactjs.org/)      
+* [Styled Components](https://styled-components.com/)
+     
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+# :construction_worker: Como Executar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clonar com o git clone
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clone Repository
+$ git clone https://github.com/acidbutter96/pokemon-dash
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 💻 Executar o projeto
 
-### `yarn eject`
+Após ter o repositório clonado em seu disco local, basta instalar as dependências com algum gerenciador de pacotes de sua preferencia
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+# Install Dependencies
+$ yarn install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+em seguida é só executar com
+# Run Aplication
+$ yarn start
+```
+O site será carregado na porta 3000 http://localhost:3000/.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# :bug: Issues
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+O projeto presente não foi refatorado ainda e portanto **podem haver alguns problemas** caso verifique algum erro, sinta-se a vontade para abrir uma issue.
