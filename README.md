@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="./src/images/logo-pokemon.svg" alt="Pokemon dash" width="300"/>
+   <img src="./src/assets/images/navbar/logo-pokemon.svg" alt="Pokemon dash" width="300"/>
 </p>
 
 [![Inline docs](http://inch-ci.org/github/acidbutter96/pokemon-dash.svg?branch=main)](http://inch-ci.org/github/acidbutter96/pokemon-dash)
